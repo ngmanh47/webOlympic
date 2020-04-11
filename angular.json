@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +127,6 @@
   },
   "defaultProject": "FE-ICPC",
   "cli": {
-    "analytics": "9d277b04-e1cd-4130-b96d-482e8e8d7d63"
+    "analytics": "c87e7729-a3ab-4034-8e12-f9b602fd5281"
   }
 }

@@ -33,9 +33,19 @@ import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytic
 // LAYOUT
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
 
+
 // Management Account
 import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
 import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
+
+// HEADER
+import { HeaderUserComponent }  from './User/Layout/Components/header/header-user.component';
+
+// BANNER
+import { BannerUserComponent }  from './User/Layout/Components/banner/banner-user.component';
+
+// FOOTER
+import { FooterUserComponent } from './User/Layout/Components/footer/footer-user.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +75,14 @@ import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin
     // LAYOUT
     UserLayoutComponent,
 
+    // HEADER
+    HeaderUserComponent,
+
+    // BANNER
+    BannerUserComponent,
+
+    // FOOTER
+    FooterUserComponent,
     // MANAGEMENT
     SchoolAdminComponent,
     SuperAdminComponent,
@@ -74,7 +92,7 @@ import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

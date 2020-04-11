@@ -23,17 +23,20 @@ const routesConfig: Routes = [
       { path: 'teams/list', component: ListTeamComponent, data: {extraParameter: ''}},
 
       {path: '**', redirectTo: 'admin'},
+       // management
+       { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
+       { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},
 
-      // management
-      { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
-      { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},
     ]
   },
 
   {
     path: '', component: UserLayoutComponent,
     children: [
-
+      // Login
+      { path: 'login', component: LoginUserComponent, data: {extraParameter: ''}},
+      // Sign up
+      { path: 'signup', component: SignUpUserComponent, data: {extraParameter: ''}},
     ]
   },
   // Login
@@ -42,6 +45,8 @@ const routesConfig: Routes = [
   { path: 'admin/signup', component: SignUpAdminComponent, data: {extraParameter: ''}},
 ]
 
+// -------------------------------------------------------------------------------------------------------
+// admin
 import { LoginAdminComponent } from './Admin/Pages/Login/login-admin.component';
 import { SignUpAdminComponent } from './Admin/Pages/SignUp/sign-up-admin.component'
 
@@ -65,6 +70,8 @@ import { ListTeamComponent } from './Admin/Pages/Components/Teams/List/list-team
 
 // ---------------------------------------------------------------------------------------------------------
 // user
+import { LoginUserComponent } from './User/Pages/Login/login-user.component';
+import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component'
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
 
 // management account
