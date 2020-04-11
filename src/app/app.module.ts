@@ -38,6 +38,7 @@ import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.compo
 import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
 import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
 
+
 // HEADER
 import { HeaderUserComponent }  from './User/Layout/Components/header/header-user.component';
 
@@ -82,10 +83,14 @@ import { FooterUserComponent } from './User/Layout/Components/footer/footer-user
     BannerUserComponent,
 
     // FOOTER
+
     FooterUserComponent,
     // MANAGEMENT
     SchoolAdminComponent,
     SuperAdminComponent,
+
+    FooterUserComponent
+
 
   ],
   imports: [
