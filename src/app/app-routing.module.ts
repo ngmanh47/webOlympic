@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routesConfig: Routes = [
   { 
-    path: '', component: BaseLayoutComponent,
+    path: 'admin', component: BaseLayoutComponent,
     children: [
+      
+
       // Dashboad
       { path: '', component: AnalyticsComponent, data: {extraParameter: ''}},
 
@@ -19,27 +21,47 @@ const routesConfig: Routes = [
       // Team
       { path: 'teams/create', component: CreateTeamComponent, data: {extraParameter: ''}},
       { path: 'teams/list', component: ListTeamComponent, data: {extraParameter: ''}},
+
+      {path: '**', redirectTo: 'admin'},
     ]
-  }
+  },
+
+  {
+    path: '', component: UserLayoutComponent,
+    children: [
+      
+    ]
+  },
+  // Login
+  { path: 'admin/login', component: LoginAdminComponent, data: {extraParameter: ''}},
+  // Sign up
+  { path: 'admin/signup', component: SignUpAdminComponent, data: {extraParameter: ''}},
 ]
 
-import { BaseLayoutComponent } from './Layout/base-layout/base-layout.component';
+import { LoginAdminComponent } from './Admin/Pages/Login/login-admin.component';
+import { SignUpAdminComponent } from './Admin/Pages/SignUp/sign-up-admin.component'
+
+import { BaseLayoutComponent } from './Admin/Layout/base-layout/base-layout.component';
 
 // DASHBOARDS
-import { AnalyticsComponent } from './Pages/Components/Dashboards/analytics/analytics.component';
+import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytics/analytics.component';
 
 // PAGES
 // Registrations
-import { CreateRegisComponent } from './Pages/Components/Registrations/Create/create-regis.component';
-import { ListRegisComponent } from './Pages/Components/Registrations/List/list-regis.component';
+import { CreateRegisComponent } from './Admin/Pages/Components/Registrations/Create/create-regis.component';
+import { ListRegisComponent } from './Admin/Pages/Components/Registrations/List/list-regis.component';
 
 // Notifications
-import { CreateNoticeComponent } from './Pages/Components/Notifications/Create/create-notice.component';
-import { ListNoticeComponent } from './Pages/Components/Notifications/List/list-notice.component';
+import { CreateNoticeComponent } from './Admin/Pages/Components/Notifications/Create/create-notice.component';
+import { ListNoticeComponent } from './Admin/Pages/Components/Notifications/List/list-notice.component';
 
 // Teams
-import { CreateTeamComponent } from './Pages/Components/Teams/Create/create-team.component';
-import { ListTeamComponent } from './Pages/Components/Teams/List/list-team.component';
+import { CreateTeamComponent } from './Admin/Pages/Components/Teams/Create/create-team.component';
+import { ListTeamComponent } from './Admin/Pages/Components/Teams/List/list-team.component';
+
+// ---------------------------------------------------------------------------------------------------------
+// user
+import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(routesConfig)],
