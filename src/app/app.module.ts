@@ -33,6 +33,10 @@ import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytic
 // LAYOUT
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
 
+// Management Account
+import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
+import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,11 +65,16 @@ import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.compo
     // LAYOUT
     UserLayoutComponent,
 
+    // MANAGEMENT
+    SchoolAdminComponent,
+    SuperAdminComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

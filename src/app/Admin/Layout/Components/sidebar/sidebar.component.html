@@ -88,8 +88,23 @@
                             Manage Notice
                         </a>
                     </li>
-                    
                 </ul>
+              <!--*ngIf="checkAcount();"-->
+                <div *ngIf="true">
+                  <li class="app-sidebar__heading">Account Management</li>
+                  <ul>
+                    <li>
+                      <a *ngIf="true" href="/admin/management/superadmin">
+                        Super Admin
+                      </a>
+                    </li>
+                    <li>
+                      <a *ngIf="true" href="/admin/management/schooladmin">
+                        School Admin
+                      </a>
+                    </li>
+                  </ul>
+                </div>
             </ul>
         </div>
     </div>

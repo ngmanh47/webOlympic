@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routesConfig: Routes = [
-  { 
+  {
     path: 'admin', component: BaseLayoutComponent,
     children: [
-      
+
 
       // Dashboad
       { path: '', component: AnalyticsComponent, data: {extraParameter: ''}},
@@ -23,13 +23,17 @@ const routesConfig: Routes = [
       { path: 'teams/list', component: ListTeamComponent, data: {extraParameter: ''}},
 
       {path: '**', redirectTo: 'admin'},
+
+      // management
+      { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
+      { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},
     ]
   },
 
   {
     path: '', component: UserLayoutComponent,
     children: [
-      
+
     ]
   },
   // Login
@@ -62,6 +66,10 @@ import { ListTeamComponent } from './Admin/Pages/Components/Teams/List/list-team
 // ---------------------------------------------------------------------------------------------------------
 // user
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
+
+// management account
+import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
+import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
 
 @NgModule({
   imports: [RouterModule.forRoot(routesConfig)],

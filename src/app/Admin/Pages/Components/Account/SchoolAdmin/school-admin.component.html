@@ -1,0 +1,53 @@
+<div class="main-card mb-3 card">
+  <div class="card-body"><h5 class="card-title">Danh sách tài khoản giáo viên</h5>
+
+      <table class="mb-0 table table-bordered">
+          <thead>
+          <tr>
+              <th>STT</th>
+              <th>Mã trường</th>
+              <th>Tên giáo viên</th>
+              <th>Tài khoản</th>
+              <th>Mật khẩu</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let teacher of arrTeacherAccount">
+            <tr>
+              <th scope="row">{{ teacher.STT }}</th>
+              <th >{{ teacher.ID }}</th>
+              <th >{{ teacher.Name }}</th>
+              <th >{{ teacher.Username }}</th>
+              <th >{{ teacher.Password }}</th>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<div class="main-card mb-3 card">
+  <div class="card-body"><h5 class="card-title">Danh sách tài khoản sinh viên</h5>
+
+      <table class="mb-0 table table-bordered">
+          <thead>
+          <tr>
+              <th>STT</th>
+              <th>Mã trường</th>
+              <th>MSSV</th>
+              <th>Tên Sinh viên</th>
+              <th>Tài khoản</th>
+              <th>Mật khẩu</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let superad of arrStudentAccount">
+            <tr>
+              <th scope="row">{{ superad.STT }}</th>
+              <th >{{ superad.ID }}</th>
+              <th >{{ superad.StudentID }}</th>
+              <th >{{ superad.Name }}</th>
+              <th >{{ superad.Username }}</th>
+              <th >{{ superad.Password }}</th>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

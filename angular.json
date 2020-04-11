@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FE-ICPC"
+    }
+  },
+  "defaultProject": "FE-ICPC",
+  "cli": {
+    "analytics": "9d277b04-e1cd-4130-b96d-482e8e8d7d63"
+  }
 }
