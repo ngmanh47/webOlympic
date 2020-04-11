@@ -33,6 +33,15 @@ import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytic
 // LAYOUT
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
 
+// HEADER
+import { HeaderUserComponent }  from './User/Layout/Components/header/header-user.component';
+
+// BANNER
+import { BannerUserComponent }  from './User/Layout/Components/banner/banner-user.component';
+
+// FOOTER
+import { FooterUserComponent } from './User/Layout/Components/footer/footer-user.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +69,15 @@ import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.compo
     // user
     // LAYOUT
     UserLayoutComponent,
+
+    // HEADER
+    HeaderUserComponent,
+
+    // BANNER
+    BannerUserComponent,
+
+    // FOOTER
+    FooterUserComponent
 
   ],
   imports: [

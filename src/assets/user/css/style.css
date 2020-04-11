@@ -1,0 +1,392 @@
+/* 1. Header area */
+/* 1a. Top header */
+.header-area 
+{
+    position: relative;
+    z-index: 100;
+    width: 100%; 
+}
+    .header-area .top-header-area 
+    {
+      width: 100%;
+      height: 100px;
+      background-color: #6360F5;
+      position: relative;
+      z-index: 1; 
+    }
+      @media only screen and (min-width: 768px) and (max-width: 991px) 
+      {
+        .header-area .top-header-area 
+        {
+          height: 70px; 
+        } 
+    }
+      @media only screen and (max-width: 767px) {
+        .header-area .top-header-area {
+          height: 70px; 
+        } 
+    }
+      .header-area .top-header-area .top-header-content {
+        width: 100%;
+        height: 100px;
+        background-color: #6360F5;
+        position: relative;
+        z-index: 1; 
+    }
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+          .header-area .top-header-area .top-header-content {
+            height: 70px; 
+        } 
+    }
+        @media only screen and (max-width: 767px) {
+          .header-area .top-header-area .top-header-content {
+            height: 70px; 
+        } 
+    }
+        .header-area .top-header-area .top-header-content .logo a {
+          display: block; }
+          @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .header-area .top-header-area .top-header-content .logo a {
+              display: none; } }
+          @media only screen and (max-width: 767px) {
+            .header-area .top-header-area .top-header-content .logo a {
+              display: none; } }
+      .header-area .top-header-area .login-search-area {
+        position: relative;
+        z-index: 1; }
+        @media only screen and (min-width: 576px) and (max-width: 767px) {
+          .header-area .top-header-area .login-search-area {
+            margin-left: 30px; } }
+        .header-area .top-header-area .login-search-area .login a {
+          display: inline-block;
+          padding: 0 10px;
+          color: #fff; }
+        .header-area .top-header-area .login-search-area .search-form form {
+          width: 250px;
+          height: 40px;
+          position: relative;
+          z-index: 2;
+          margin-left: 50px; }
+          @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .header-area .top-header-area .login-search-area .search-form form {
+              width: 400px; } }
+          @media only screen and (max-width: 767px) {
+            .header-area .top-header-area .login-search-area .search-form form {
+              margin-left: 0;
+              width: 160px; } }
+          @media only screen and (min-width: 480px) and (max-width: 767px) {
+            .header-area .top-header-area .login-search-area .search-form form {
+              margin-left: 0;
+              width: 300px; } }
+          @media only screen and (min-width: 576px) and (max-width: 767px) {
+            .header-area .top-header-area .login-search-area .search-form form {
+              width: 320px; } }
+          .header-area .top-header-area .login-search-area .search-form form input {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: transparent;
+            padding: 0 15px;
+            font-size: 12px;
+            font-style: italic;
+            color: #fff; }
+            .header-area .top-header-area .login-search-area .search-form form input.form-control {
+              box-shadow: none; }
+          .header-area .top-header-area .login-search-area .search-form form button {
+            width: 50px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            cursor: pointer;
+            outline: none; }
+          .header-area .top-header-area .login-search-area .search-form form .form-control::-webkit-input-placeholder {
+            color: #fff;
+            opacity: 1; }
+          .header-area .top-header-area .login-search-area .search-form form .form-control::-moz-placeholder {
+            color: #fff;
+            opacity: 1; }
+          .header-area .top-header-area .login-search-area .search-form form .form-control:-ms-input-placeholder {
+            color: #fff;
+            opacity: 1; }
+          .header-area .top-header-area .login-search-area .search-form form .form-control::-ms-input-placeholder {
+            color: #fff;
+            opacity: 1; }
+          .header-area .top-header-area .login-search-area .search-form form .form-control::placeholder {
+            color: #fff;
+            opacity: 1; }
+
+/* 1b. Navbar */
+.header-area .navbar-area {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+    height: 80px;
+    /* border-bottom: 1px solid black; */
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); */
+    box-shadow: 1px 3px 4px rgba(51, 49, 49, 0.5);
+}
+
+.header-area .navbar-area .list-menu
+{
+    height: 80px;
+    padding: 0; 
+}
+
+.header-area .navbar-area .list-menu ul
+{
+    list-style-type: none; /* kiểu của các dòng trong danh sách là không có gì đầu dòng */
+    margin: 0; /* thụt lề bằng 0 */
+    padding: 0; /* vùng đệm để đẩy thành phần chứa bên trong thụt vô bằng 0 */
+    overflow: hidden; /* nếu chữ/ hình bị tràn ra ngoài, cắt bỏ */
+}
+
+.header-area .navbar-area .list-menu ul li 
+{
+    float: left; /* cho các dòng trôi nổi về góc bên trái như những cục shit trôi sông tấp vào bờ trái */
+}
+.header-area .navbar-area .list-menu ul li a 
+{
+    display: block; /* bình thường thẻ a là thẻ inline, không phải block, giờ cho nó thành block */
+    text-align: center; /* canh lề giữa cho chữ, tức thẻ a sẽ là khối chữ nhật, chữ nằm giữa, canh đều hai bên */
+    padding: 16px; /* vùng đệm thụt vào 16px rồi mới đến nội dung bên trong a */
+    text-decoration: none; /* không trang trí hoa hòe hoa sói, tức rà chuột, kích chuột,... chữ vẫn trắng mà không ra màu khác hay chớp nháy, gạch chân gì cả */ 
+    font-weight: 500; 
+    font-size: 20px;
+    color: gray;
+}
+
+.header-area .navbar-area .list-menu ul li a:hover
+{
+    color: blue;
+}
+
+/* 2. Hero Area */
+.hero-area {
+    position: relative;
+    z-index: 1;
+    padding: 50px 0 80px; 
+}
+.hero-area .breaking-news-area 
+{
+    position: relative;
+    z-index: 1; 
+}
+.hero-area .breaking-news-area .news-title 
+{
+    min-width: 150px;
+    height: 38px;
+    background-color: #6360F5;
+    text-align: center;
+    padding: 0 20px; 
+}
+.hero-area .breaking-news-area .news-title p {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: #fff;
+    line-height: 38px; 
+}
+@media only screen and (max-width: 767px) {
+    .hero-area .breaking-news-area .news-title p {
+        font-size: 12px; 
+    } 
+}
+.hero-area .breaking-news-area .news-title.title2 {
+    background-color: #152535; 
+}
+
+@media only screen and (max-width: 767px) {
+    .hero-area .breaking-news-area .news-title {
+    min-width: 100px;
+    padding: 0 5px; 
+    } 
+}
+.hero-area .breaking-news-area .ticker {
+    width: 100%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px;
+    background-color: darkgray; 
+    height: 38px;
+    line-height: 38px; 
+}
+@media only screen and (max-width: 767px) {
+    .hero-area .breaking-news-area .ticker {
+    padding: 0 5px; 
+    } 
+}
+.hero-area .breaking-news-area .ticker ul {
+    width: 100%;
+    position: relative;
+    z-index: 1; 
+}
+.hero-area .breaking-news-area .ticker ul li {
+    list-style-type: none; 
+    width: 100%; 
+}
+.hero-area .breaking-news-area .ticker ul li a {
+    display: block;
+    font-size: 15px;
+    color: black;
+    height: 38px;
+    line-height: 38px; 
+}
+.hero-area .breaking-news-area .ticker ul li a:hover, .hero-area .breaking-news-area .ticker ul li a:focus {
+    color: blue; 
+}
+@media only screen and (max-width: 767px) {
+    .hero-area .breaking-news-area .ticker ul li a {
+        font-size: 12px; 
+    } 
+}
+.hero-add {
+    position: relative;
+    z-index: 1; 
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .hero-add {
+        margin-top: 80px;
+        text-align: center; 
+    } 
+}
+@media only screen and (max-width: 767px) {
+    .hero-add {
+    margin-top: 80px;
+    text-align: center; 
+    } 
+}
+
+/* :: 3. Blog Post Area */
+.single-blog-post {
+  position: relative;
+  z-index: 1; 
+}
+.single-blog-post .post-thumb a {
+  display: block; 
+  
+}
+.single-blog-post .post-data {
+  padding: 30px 0; 
+}
+.single-blog-post .post-data a{
+  text-decoration: none;
+}
+.single-blog-post .post-data .post-title {
+  display: block; 
+}
+.single-blog-post .post-data .post-title h6 {
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  line-height: 1.5; 
+}
+.single-blog-post .post-data .post-title h3 {
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  line-height: 1.5; 
+}
+.single-blog-post .post-data .post-title h6:hover, .single-blog-post .post-data .post-title h6:focus {
+  color: #ee002d; 
+}
+.single-blog-post .post-data .post-title h3:hover, .single-blog-post .post-data .post-title h3:focus {
+  color: #ee002d; 
+}
+.single-blog-post .post-data .post-meta .post-date a {
+  display: block; 
+}
+.single-blog-post .post-data .post-meta .post-date a:hover, .single-blog-post .post-data .post-meta .post-date a:focus {
+  color: #ee002d; 
+}
+
+.single-blog-post.featured-post {
+  position: relative;
+  z-index: 1; 
+}
+.single-blog-post.featured-post .post-data {
+  padding: 30px 0; 
+}
+.single-blog-post.featured-post .post-data .post-title h3 {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  font-weight: 500; 
+}
+@media only screen and (max-width: 767px) {
+  .single-blog-post.featured-post .post-data .post-title h3 {
+    font-size: 24px; 
+  } 
+}
+
+.single-blog-post.featured-post .post-data .post-author {
+  margin-bottom: 15px;
+  display: block;
+  width: 100%; 
+}
+.single-blog-post.featured-post .post-data .post-author a {
+  display: inline-block;
+  color: #ee002d; 
+}
+.single-blog-post.featured-post .post-data .post-excerp {
+  font-weight: 500;
+  margin-bottom: 40px;
+  display: block;
+  line-height: 2.1; 
+}
+.single-blog-post.featured-post.single-post .post-data {
+  padding: 30px 0; 
+}
+.single-blog-post.featured-post.single-post .post-data p {
+  margin-bottom: 30px; 
+}
+.single-blog-post.featured-post.single-post .post-data .related--post {
+  display: block;
+  font-size: 18px;
+  color: #2c61db;
+  margin: 40px 0; 
+}
+.single-blog-post.featured-post.single-post .post-data .related--post:hover, .single-blog-post.featured-post.single-post .post-data .related--post:focus {
+  color: #ee002d; 
+}
+.single-blog-post.featured-post-2 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 15px; 
+}
+.single-blog-post.featured-post-2 .post-data {
+  padding: 15px 0; 
+}
+.single-blog-post.featured-post-2 .post-data .post-title h6 {
+  font-size: 18px;
+  line-height: 1.55;
+  margin-bottom: 20px;
+  font-weight: 500; 
+}
+.single-blog-post.featured-post-2 .post-data .post-author {
+  margin-bottom: 15px;
+  display: block;
+  width: 100%; 
+}
+.single-blog-post.featured-post-2 .post-data .post-author a {
+  display: inline-block;
+  color: #ee002d; 
+}
+
+/* 4. Footer area */
+.footer-area {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-color: #02031c; 
+}
+.footer-area .footer-widget{
+  color:#fff;
+  line-height: 1.5;
+  margin: 20px 0px;
+  font-weight: 500; 
+  font-size: 20px;
+}
