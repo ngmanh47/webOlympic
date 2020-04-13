@@ -42,11 +42,17 @@ import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin
 // HEADER
 import { HeaderUserComponent }  from './User/Layout/Components/header/header-user.component';
 
+// HERO
+import { HeroUserComponent } from './User/Layout/Components/hero/hero-user.component';
+
 // BANNER
 import { BannerUserComponent }  from './User/Layout/Components/banner/banner-user.component';
 
 // FOOTER
 import { FooterUserComponent } from './User/Layout/Components/footer/footer-user.component';
+
+// PAGES
+import { HomeUserComponent } from './User/Pages/Home/home-user.component';
 
 @NgModule({
   declarations: [
@@ -79,12 +85,19 @@ import { FooterUserComponent } from './User/Layout/Components/footer/footer-user
     // HEADER
     HeaderUserComponent,
 
+    // HERO
+    HeroUserComponent,
+
     // BANNER
     BannerUserComponent,
 
     // FOOTER
 
     FooterUserComponent,
+
+    // PAGES
+    HomeUserComponent,
+
     // MANAGEMENT
     SchoolAdminComponent,
     SuperAdminComponent,

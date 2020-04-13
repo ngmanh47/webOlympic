@@ -1,0 +1,14 @@
+/* 4. Footer area */
+.footer-area {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: #02031c; 
+  }
+  .footer-area .footer-widget{
+    color:#fff;
+    line-height: 1.5;
+    margin: 20px 0px;
+    font-weight: 500; 
+    font-size: 20px;
+  }

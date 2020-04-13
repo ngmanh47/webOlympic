@@ -7,7 +7,7 @@ const routesConfig: Routes = [
     children: [
 
 
-      // Dashboad
+      // Dashboard
       { path: '', component: AnalyticsComponent, data: {extraParameter: ''}},
 
       // Registration
@@ -22,7 +22,7 @@ const routesConfig: Routes = [
       { path: 'teams/create', component: CreateTeamComponent, data: {extraParameter: ''}},
       { path: 'teams/list', component: ListTeamComponent, data: {extraParameter: ''}},
 
-      {path: '**', redirectTo: 'admin'},
+      
        // management
        { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
        { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},
@@ -33,16 +33,20 @@ const routesConfig: Routes = [
   {
     path: '', component: UserLayoutComponent,
     children: [
+      // Home
+      { path: '', component: HomeUserComponent, data: {extraParameter: ''}},
       // Login
       { path: 'login', component: LoginUserComponent, data: {extraParameter: ''}},
       // Sign up
-      { path: 'signup', component: SignUpUserComponent, data: {extraParameter: ''}},
+      { path: 'sign-up', component: SignUpUserComponent, data: {extraParameter: ''}},
     ]
   },
   // Login
   { path: 'admin/login', component: LoginAdminComponent, data: {extraParameter: ''}},
   // Sign up
   { path: 'admin/signup', component: SignUpAdminComponent, data: {extraParameter: ''}},
+
+  {path: '**', redirectTo: ''},
 ]
 
 // -------------------------------------------------------------------------------------------------------
@@ -73,6 +77,8 @@ import { ListTeamComponent } from './Admin/Pages/Components/Teams/List/list-team
 import { LoginUserComponent } from './User/Pages/Login/login-user.component';
 import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component'
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
+import { HomeUserComponent } from './User/Pages/Home/home-user.component';
+
 
 // management account
 import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
