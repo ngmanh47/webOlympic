@@ -1,53 +1,168 @@
 <div class="main-card mb-3 card">
-  <div class="card-body"><h5 class="card-title">Danh sách tài khoản giáo viên</h5>
+  <div class="card-body">
+    <h5 class="card-title">Danh sách tài khoản giáo viên</h5>
 
-      <table class="mb-0 table table-bordered">
-          <thead>
-          <tr>
-              <th>STT</th>
-              <th>Mã trường</th>
-              <th>Tên giáo viên</th>
-              <th>Tài khoản</th>
-              <th>Mật khẩu</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let teacher of arrTeacherAccount">
-            <tr>
-              <th scope="row">{{ teacher.STT }}</th>
-              <th >{{ teacher.ID }}</th>
-              <th >{{ teacher.Name }}</th>
-              <th >{{ teacher.Username }}</th>
-              <th >{{ teacher.Password }}</th>
-            </tr>
-          </tbody>
-      </table>
+    <table class="mb-0 table table-bordered">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã trường</th>
+          <th>Tên giáo viên</th>
+          <th>Tài khoản</th>
+          <th>Mật khẩu</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let teacher of arrTeacherAccount">
+        <tr>
+          <th scope="row">{{ teacher.STT }}</th>
+          <th>{{ teacher.ID }}</th>
+          <th>{{ teacher.Name }}</th>
+          <th>{{ teacher.Username }}</th>
+          <th>{{ teacher.Password }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div>
+  <button class="mt-2 btn btn-primary col-sm-4" (click)="getFormAdd();">Thêm</button>
+  <button class="mt-2 btn btn-primary col-sm-4" (click)="getFormUp();">Sửa</button>
+  <button class="mt-2 btn btn-primary col-sm-4" (click)="getFormDe();">Xoá</button><br><br>
+</div>
+<div class="tab-content" *ngIf="showFormAdd">
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Thêm tài khoản</h5>
+        <form class="" ng-app="myApp" ng-controller="myCtrl">
+          <div class="form-row">
+            <div class="col-md-12">
+              <div class="position-relative form-group"><label class="">Tên giáo viên</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="tentruong" /></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Tài khoản</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="taikhoan" /></div>
+            </div>
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Mật khẩu</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="matkhau" /></div>
+            </div>
+          </div>
+          <button class="mt-2 btn btn-primary">Thêm</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showFormDelete || showFormUpdate">
+  <h5>Chọn giáo viên: </h5>
+  <!-- <select  name="taikhoanGV" onchange="getValueOfSelect(this)">
+    <optgroup label="Tên">
+      <option *ngFor="let item of arrTeacherAccount" [value]="item.STT"> {{ item.Name }}</option>
+    </optgroup>
+  </select> -->
+
+  <select  name="taikhoanGV" (change)="getValueOfSelect($event.target.value)">
+    <optgroup label="Tên">
+      <option > --- chọn 1 đáp án ----</option>
+      <option value="1"> 1</option>
+      <option value="2"> 2</option>
+      <option value="3"> 3</option>
+    </optgroup>
+  </select>
+  <h5> this is value: {{ value }} </h5>
+</div>
+<div class="tab-content" *ngIf="showFormUpdate">
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title row-sm-6">Sửa tài khoản</h5>
+        <form class="" ng-app="myApp" ng-controller="myCtrl">
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Tên giáo viên</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="tentruong" /></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Tài khoản</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="taikhoan" /></div>
+            </div>
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Mật khẩu</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="matkhau" /></div>
+            </div>
+          </div>
+          <button class="mt-2 btn btn-primary">Cập nhật</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="tab-content" *ngIf="showFormDelete">
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Xoá tài khoản</h5>
+        <form class="" ng-app="myApp" ng-controller="myCtrl">
+          <div class="form-row">
+            <div class="col-md-12">
+              <div class="position-relative form-group"><label class="">Tên giáo viên</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="tentruong" /></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Tài khoản</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="taikhoan" /></div>
+            </div>
+            <div class="col-md-6">
+              <div class="position-relative form-group"><label class="">Mật khẩu</label><input placeholder=""
+                  type="text" class="form-control" [(ngModel)]="matkhau" /></div>
+            </div>
+          </div>
+          <button class="mt-2 btn btn-primary">Xoá</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="main-card mb-3 card">
-  <div class="card-body"><h5 class="card-title">Danh sách tài khoản sinh viên</h5>
+  <div class="card-body">
+    <h5 class="card-title">Danh sách tài khoản sinh viên</h5>
 
-      <table class="mb-0 table table-bordered">
-          <thead>
-          <tr>
-              <th>STT</th>
-              <th>Mã trường</th>
-              <th>MSSV</th>
-              <th>Tên Sinh viên</th>
-              <th>Tài khoản</th>
-              <th>Mật khẩu</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let superad of arrStudentAccount">
-            <tr>
-              <th scope="row">{{ superad.STT }}</th>
-              <th >{{ superad.ID }}</th>
-              <th >{{ superad.StudentID }}</th>
-              <th >{{ superad.Name }}</th>
-              <th >{{ superad.Username }}</th>
-              <th >{{ superad.Password }}</th>
-            </tr>
-          </tbody>
-      </table>
+    <table class="mb-0 table table-bordered">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã trường</th>
+          <th>MSSV</th>
+          <th>Tên Sinh viên</th>
+          <th>Tài khoản</th>
+          <th>Mật khẩu</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let superad of arrStudentAccount">
+        <tr>
+          <th scope="row">{{ superad.STT }}</th>
+          <th>{{ superad.ID }}</th>
+          <th>{{ superad.StudentID }}</th>
+          <th>{{ superad.Name }}</th>
+          <th>{{ superad.Username }}</th>
+          <th>{{ superad.Password }}</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
+

@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperAdminComponent implements OnInit {
   isShowFormAdd=false;
+  showFormAdd = false;
+  showFormUpdate = false;
+  showFormDelete = false;
   tentruong='';
   matruong='';
   taikhoan='';
@@ -38,7 +41,22 @@ export class SuperAdminComponent implements OnInit {
 
   ngOnInit() {
   }
-  addSchool(){
+  getFormAdd(){
+    this.showFormAdd=!this.showFormAdd;
+    this.showFormDelete=false;
+    this.showFormUpdate=false;
+  }
+  getFormUp(){
+    this.showFormAdd=false
+    this.showFormDelete=false;
+    this.showFormUpdate=!this.showFormUpdate;
+  }
+  getFormDe(){
+    this.showFormAdd=false;
+    this.showFormDelete=! this.showFormDelete;
+    this.showFormUpdate=false;
+  }
+  addSchoolAdmin(){
       this.arrSChoolAccount.push({
         ID: this.matruong,
         Name:this.tentruong,
@@ -46,9 +64,5 @@ export class SuperAdminComponent implements OnInit {
         Password:this.matkhau,
         STT: this.arrSChoolAccount.length + 1
       });
-      this.taikhoan='';
-      this.matkhau='';
-      this.tentruong='';
-      this.matruong='';
   }
 }
