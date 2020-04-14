@@ -22,7 +22,7 @@ const routesConfig: Routes = [
       { path: 'teams/create', component: CreateTeamComponent, data: {extraParameter: ''}},
       { path: 'teams/list', component: ListTeamComponent, data: {extraParameter: ''}},
 
-      
+
        // management
        { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
        { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},

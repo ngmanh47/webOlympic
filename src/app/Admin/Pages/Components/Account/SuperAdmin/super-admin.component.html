@@ -1,26 +1,27 @@
 <div class="main-card mb-3 card">
-  <div class="card-body"><h5 class="card-title">Danh sách tài khoản của trường</h5>
+  <div class="card-body">
+    <h5 class="card-title">Danh sách tài khoản của trường</h5>
 
-      <table class="mb-0 table table-bordered">
-          <thead>
-          <tr>
-              <th>STT</th>
-              <th>Mã trường</th>
-              <th>Tên trường</th>
-              <th>Tài khoản</th>
-              <th>Mật khẩu</th>
-          </tr>
-          </thead>
-          <tbody *ngFor="let superad of arrSChoolAccount">
-            <tr>
-              <th scope="row">{{ superad.STT }}</th>
-              <th >{{ superad.ID }}</th>
-              <th >{{ superad.Name }}</th>
-              <th >{{ superad.Username }}</th>
-              <th >{{ superad.Password }}</th>
-            </tr>
-          </tbody>
-      </table>
+    <table class="mb-0 table table-bordered">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã trường</th>
+          <th>Tên trường</th>
+          <th>Tài khoản</th>
+          <th>Mật khẩu</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let superad of arrSChoolAccount">
+        <tr>
+          <th scope="row">{{ superad.STT }}</th>
+          <th>{{ superad.ID }}</th>
+          <th>{{ superad.Name }}</th>
+          <th>{{ superad.Username }}</th>
+          <th>{{ superad.Password }}</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <div>
@@ -30,62 +31,86 @@
 </div>
 <div class="tab-content" *ngIf="showFormAdd">
   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-      <div class="main-card mb-3 card">
-          <div class="card-body"><h5 class="card-title">Thông tin tài khoản</h5>
-              <!-- <form> -->
-                  <div class="form-row">
-                    <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..."  class="form-control" [(ngModel)]="matruong"/></div>
-                    <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..."  class="form-control" [(ngModel)]="tentruong"/></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..."  class="form-control" [(ngModel)]="taikhoan"/></div>
-                    <div class="position-relative form-group col-md-6">Mật khẩu<input placeholder="..." class="form-control" [(ngModel)]="matkhau"/></div>
-                  </div>
-                  <button  (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
-              <!-- </form> -->
-          </div>
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Thông tin tài khoản</h5>
+        <!-- <form> -->
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..." class="form-control"
+              [(ngModel)]="matruong" /></div>
+          <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..." class="form-control"
+              [(ngModel)]="tentruong" /></div>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..." class="form-control"
+              [(ngModel)]="taikhoan" /></div>
+          <div class="position-relative form-group col-md-6">Mật khẩu<input placeholder="..." class="form-control"
+              [(ngModel)]="matkhau" /></div>
+        </div>
+        <button (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
+        <!-- </form> -->
       </div>
+    </div>
   </div>
 </div>
-
 <div class="tab-content" *ngIf="showFormUpdate">
+  <h5>Chọn trường : </h5>
+  <select name="CapNhat" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn trường cần cập nhật----</option>
+      <option *ngFor="let item of arrSChoolAccount" [value]="item.STT-1"> {{ item.Name }}</option> <!--value is index of arr-->
+    </optgroup>
+  </select>
   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-      <div class="main-card mb-3 card">
-          <div class="card-body"><h5 class="card-title">Thông tin tài khoản</h5>
-              <form>
-                  <div class="form-row">
-                    <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..."  class="form-control" [(ngModel)]="matruong"/></div>
-                    <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..."  class="form-control" [(ngModel)]="tentruong"/></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..."  class="form-control" [(ngModel)]="taikhoan"/></div>
-                    <div class="position-relative form-group col-md-6">Mật khẩu<input placeholder="..." class="form-control" [(ngModel)]="matkhau"/></div>
-                  </div>
-                  <button  (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
-              </form>
-          </div>
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Cập nhật thông tin</h5>
+        <div class="form-row" >
+          <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..." class="form-control"
+              value="{{a}}" [(ngModel)]="matruong"/></div>
+          <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..." class="form-control"
+              value="{{b}}" [(ngModel)]="tentruong" /></div>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..." class="form-control"
+              value="{{c}}" [(ngModel)]="taikhoan" /></div>
+          <div class="position-relative form-group col-md-6">Mật khẩu <input placeholder="..." class="form-control"
+              value="{{d}}" [(ngModel)]="matkhau" /></div>
+        </div>
+        <button (click)="UpdateSchoolAdmin();" class="mt-2 btn btn-primary">Cập nhật</button>
       </div>
+    </div>
   </div>
 </div>
 
 <div class="tab-content" *ngIf="showFormDelete">
+  <h5>Chọn trường : </h5>
+  <select name="Xoa" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn trường cần xoá----</option>
+      <option *ngFor="let item of arrSChoolAccount" [value]="item.STT-1"> {{ item.Name }}</option> <!--value is index of arr-->
+    </optgroup>
+  </select>
   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
-      <div class="main-card mb-3 card">
-          <div class="card-body"><h5 class="card-title">Thông tin tài khoản</h5>
-              <form>
-                  <div class="form-row">
-                    <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..."  class="form-control" [(ngModel)]="matruong"/></div>
-                    <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..."  class="form-control" [(ngModel)]="tentruong"/></div>
-                  </div>
-                  <div class="form-row">
-                    <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..."  class="form-control" [(ngModel)]="taikhoan"/></div>
-                    <div class="position-relative form-group col-md-6">Mật khẩu<input placeholder="..." class="form-control" [(ngModel)]="matkhau"/></div>
-                  </div>
-                  <button  (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
-              </form>
-          </div>
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Kiểm tra tài khoản trước khi xoá</h5>
+        <!-- <form> -->
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Mã trường<input disabled placeholder="..." class="form-control"
+            value="{{a}}" [(ngModel)]="matruong" /></div>
+          <div class="position-relative form-group col-md-6">Tên trường<input disabled placeholder="..." class="form-control"
+            value="{{b}}" [(ngModel)]="tentruong" /></div>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Tài khoản<input disabled placeholder="..." class="form-control"
+            value="{{c}}" [(ngModel)]="taikhoan" /></div>
+          <div class="position-relative form-group col-md-6">Mật khẩu<input disabled placeholder="..." class="form-control"
+            value="{{d}}" [(ngModel)]="matkhau" /></div>
+        </div>
+        <button (click)="DeleteSchoolAdmin();" class="mt-2 btn btn-primary">Xoá</button>
+        <!-- </form> -->
       </div>
+    </div>
   </div>
 </div>
-
-
