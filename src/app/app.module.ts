@@ -53,6 +53,8 @@ import { FooterUserComponent } from './User/Layout/Components/footer/footer-user
 
 // PAGES
 import { HomeUserComponent } from './User/Pages/Home/home-user.component';
+import { ContactUserComponent } from './User/Pages/Contact/contact-user.component';
+import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-user.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,10 @@ import { HomeUserComponent } from './User/Pages/Home/home-user.component';
     // DASHBOARD
     AnalyticsComponent,
 
+    // MANAGEMENT
+    SchoolAdminComponent,
+    SuperAdminComponent,
+
     // -------------------------------------------------------------------------------------------------
 
     // user
@@ -97,13 +103,8 @@ import { HomeUserComponent } from './User/Pages/Home/home-user.component';
 
     // PAGES
     HomeUserComponent,
-
-    // MANAGEMENT
-    SchoolAdminComponent,
-    SuperAdminComponent,
-
-    FooterUserComponent
-
+    ContactUserComponent,
+    SinglePostUserComponent,
 
   ],
   imports: [

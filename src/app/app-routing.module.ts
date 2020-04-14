@@ -39,6 +39,10 @@ const routesConfig: Routes = [
       { path: 'login', component: LoginUserComponent, data: {extraParameter: ''}},
       // Sign up
       { path: 'sign-up', component: SignUpUserComponent, data: {extraParameter: ''}},
+      // Contact
+      { path: 'contact', component: ContactUserComponent, data: {extraParameter: ''}},
+      // Posts
+      { path: 'posts/:id', component: SinglePostUserComponent},
     ]
   },
   // Login
@@ -78,11 +82,13 @@ import { LoginUserComponent } from './User/Pages/Login/login-user.component';
 import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component'
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
 import { HomeUserComponent } from './User/Pages/Home/home-user.component';
-
+import { ContactUserComponent } from './User/Pages/Contact/contact-user.component';
+import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-user.component';
 
 // management account
 import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
 import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routesConfig)],

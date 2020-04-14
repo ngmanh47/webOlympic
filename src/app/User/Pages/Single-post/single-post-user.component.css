@@ -1,0 +1,103 @@
+.single-blog-post {
+    position: relative;
+    z-index: 1; 
+}
+.single-blog-post .post-data a{
+    text-decoration: none;
+  }
+.single-blog-post.featured-post {
+    position: relative;
+    z-index: 1; 
+}
+.single-blog-post.featured-post .post-data {
+    padding: 30px 0; 
+}
+.single-blog-post.featured-post .post-data .post-title h6 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 500; 
+    color: black;
+}
+@media only screen and (max-width: 767px) {
+    .single-blog-post.featured-post .post-data .post-title h6 {
+        font-size: 24px; 
+    } 
+}
+.single-blog-post.featured-post .post-data .post-author {
+    margin-bottom: 15px;
+    display: block;
+    width: 100%; 
+}
+.single-blog-post.featured-post .post-data .post-author a {
+    display: inline-block;
+    color: #2c61db; 
+}
+.single-blog-post.featured-post .post-data .post-excerp {
+    font-weight: 500;
+    margin-bottom: 40px;
+    display: block;
+    line-height: 2.1; 
+}
+.single-blog-post.featured-post.single-post .post-data {
+    padding: 30px 0; 
+}
+.single-blog-post.featured-post.single-post .post-data p {
+    margin-bottom: 30px; 
+}
+.single-blog-post.featured-post.single-post .post-data .related--post {
+    display: block;
+    font-size: 18px;
+    color: #2c61db;
+    margin: 40px 0; 
+}
+.single-blog-post.featured-post.single-post .post-data .related--post:hover, .single-blog-post.featured-post.single-post .post-data .related--post:focus {
+    color: #ee002d; 
+}
+
+
+.single-blog-post.small-featured-post {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #d0d5d8;
+    padding: 20px 0; }
+.single-blog-post.small-featured-post .post-thumb {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 90px;
+    flex: 0 0 90px;
+    max-width: 90px;
+    width: 90px;
+    margin-right: 15px; 
+}
+.single-blog-post.small-featured-post .post-thumb img{
+   
+    max-width: 90px;
+    width: 90px;
+    height: 90px;
+
+}
+.single-blog-post.small-featured-post .post-data {
+    padding: 0; 
+}
+.single-blog-post.small-featured-post .post-data .post-catagory {
+    margin-bottom: 10px;
+    line-height: 1; 
+}
+.single-blog-post.small-featured-post .post-data .post-title h6 {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-weight: 700; 
+}
+.single-blog-post.small-featured-post .post-data .post-date {
+    margin-bottom: 0;
+    line-height: 1; 
+}
+.single-blog-post.small-featured-post:first-child {
+    padding-top: 0; 
+}
+.single-blog-post.small-featured-post:last-child {
+    padding-bottom: 0;
+    border-bottom: none; 
+}
+
