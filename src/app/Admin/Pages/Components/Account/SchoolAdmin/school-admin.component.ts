@@ -9,6 +9,8 @@ export class SchoolAdminComponent implements OnInit {
   showFormAdd = false;
   showFormUpdate = false;
   showFormDelete = false;
+  showFormUpgrade = false;
+  masv='';
   tentruong='';
   taikhoan='';
   matkhau='';
@@ -79,11 +81,17 @@ export class SchoolAdminComponent implements OnInit {
   constructor() { }
   getValueOfSelect(obj){
     this.value=obj;
-
     this.a=this.arrTeacherAccount[this.value].ID;
     this.b=this.arrTeacherAccount[this.value].Name;
     this.c=this.arrTeacherAccount[this.value].Username;
     this.d=this.arrTeacherAccount[this.value].Password;
+  }
+  getValueOfSelect2(obj){
+    this.value=obj;
+    this.a=this.arrStudentAccount[this.value].StudentID;
+    this.b=this.arrStudentAccount[this.value].Name;
+    this.c=this.arrStudentAccount[this.value].Username;
+    this.d=this.arrStudentAccount[this.value].Password;
   }
   resetVar(){
     this.tentruong='';
@@ -120,10 +128,7 @@ export class SchoolAdminComponent implements OnInit {
       Password:this.matkhau,
       STT: this.arrTeacherAccount.length + 1
     });
-    this.tentruong='';
-    this.taikhoan='';
-    this.matkhau='';
-    this. value='';
+    this.resetVar();
 }
 UpdateTeacherAccount(){
   if(this.tentruong != ""){
@@ -153,6 +158,35 @@ DeleteTeacherAccount(){
           this.arrTeacherAccount[i].STT=i+1;
     }
   }
+  this.resetVar();
+}
+UpgradeAccountStudent(){
+  // xoa account in db accountStudent
+  if(parseInt(this.value) < this.arrStudentAccount.length && parseInt(this.value)>=0){
+    this.arrStudentAccount.splice(parseInt(this.value) , 1);
+    for(var i=0;i<this.arrStudentAccount.length;i++){
+          this.arrStudentAccount[i].STT=i+1;
+    }
+  }
+  // them account in db accountTeacher
+  // check var
+  if(this.tentruong===''){
+      this.tentruong=this.b;
+  }
+  if(this.taikhoan===''){
+    this.taikhoan=this.c;
+}
+if(this.matkhau===''){
+  this.matkhau=this.d;
+}
+  this.arrTeacherAccount.push({
+    ID: "HCMUS",
+    Name:this.tentruong,
+    Username: this.taikhoan,
+    Password:this.matkhau,
+    STT: this.arrTeacherAccount.length + 1
+  });
+  this.masv='';
   this.resetVar();
 }
   ngOnInit() {
