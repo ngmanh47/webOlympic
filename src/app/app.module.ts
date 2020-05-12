@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -55,6 +54,9 @@ import { FooterUserComponent } from './User/Layout/Components/footer/footer-user
 import { HomeUserComponent } from './User/Pages/Home/home-user.component';
 import { ContactUserComponent } from './User/Pages/Contact/contact-user.component';
 import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-user.component';
+import { UserService } from './User/Shared/user.service';
+import { LoginUserComponent } from './User/Pages/Login/login-user.component';
+import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component';
 
 @NgModule({
   declarations: [
@@ -105,15 +107,16 @@ import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-us
     HomeUserComponent,
     ContactUserComponent,
     SinglePostUserComponent,
-
+    LoginUserComponent,
+    SignUpUserComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

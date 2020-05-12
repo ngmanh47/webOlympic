@@ -1,11 +1,11 @@
 <div class="container">
     
-    <form action="" class="signup">
+    <form class="signup" #userRegisFrom="ngForm" (ngSubmit)="OnSubmit(Username.value, Password.value)">
         <h3>Đăng ký</h3>
         <div class="form-group">
             <div class="form-group col-md">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="abc@email.com" name="email" required>
+                <input type="email" class="form-control" #Username  name="Username"  placeholder="abc@email.com" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
@@ -13,19 +13,19 @@
         <div class="form-group">
             <div class="form-group col-md">
                 <label for="pwd">Password</label>
-                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                <input type="password" class="form-control" #Password ngModel name="Password" placeholder="Enter password" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <div class="form-group col-md">
                 <label for="pwd">Confirm Password</label>
                 <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
                 <div class="valid-feedback">Valid.</div>
                 <div class="invalid-feedback">Please fill out this field.</div>
             </div>
-        </div>
+        </div> -->
         <div class="form-group form-check">
             <div class="form-group col-md">
                 <label class="form-check-label">
@@ -36,8 +36,10 @@
             </div>
         </div>
         <div style="margin-left: 15px;">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button class="btn btn-primary">Register</button>
         </div>
-        
+        <div *ngIf = "isSignupError" class="">
+            Dang ky khong thanh cong
+        </div>
     </form>
 </div>
