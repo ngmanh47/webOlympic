@@ -25,18 +25,16 @@ import { FooterComponent } from './Admin/Layout/Components/footer/footer.compone
 import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytics/analytics.component';
 
 // PAGES
+// Management Account
+import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
+import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
+
 
 // ------------------------------------------------------------------------------------------------------
 
 // user
 // LAYOUT
 import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.component';
-
-
-// Management Account
-import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
-import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
-
 
 // HEADER
 import { HeaderUserComponent }  from './User/Layout/Components/header/header-user.component';
@@ -57,6 +55,8 @@ import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-us
 import { UserService } from './User/Shared/user.service';
 import { LoginUserComponent } from './User/Pages/Login/login-user.component';
 import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component';
+import { ProfileComponent } from './User/Pages/Profile/profile.component';
+import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +108,9 @@ import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component'
     ContactUserComponent,
     SinglePostUserComponent,
     LoginUserComponent,
-    SignUpUserComponent
+    SignUpUserComponent,
+    ProfileComponent,
+    SponsorComponent,
   ],
   imports: [
     BrowserModule,

@@ -43,6 +43,11 @@ const routesConfig: Routes = [
       { path: 'contact', component: ContactUserComponent, data: {extraParameter: ''}},
       // Posts
       { path: 'posts/:id', component: SinglePostUserComponent},
+      // Profile
+      { path: 'profile/:id', component: ProfileComponent},
+      // Sponsor
+      { path: 'sponsor', component: SponsorComponent},
+
     ]
   },
   // Login
@@ -84,6 +89,9 @@ import { UserLayoutComponent } from './User/Layout/user-layout/user-layout.compo
 import { HomeUserComponent } from './User/Pages/Home/home-user.component';
 import { ContactUserComponent } from './User/Pages/Contact/contact-user.component';
 import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-user.component';
+import { ProfileComponent } from './User/Pages/Profile/profile.component';
+import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
+
 
 // management account
 import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
