@@ -28,7 +28,7 @@ import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytic
 // Management Account
 import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
 import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
-
+import { LoginAdminComponent } from './Admin/Pages/Login/login-admin.component';
 
 // ------------------------------------------------------------------------------------------------------
 
@@ -83,6 +83,7 @@ import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
     // MANAGEMENT
     SchoolAdminComponent,
     SuperAdminComponent,
+    LoginAdminComponent,
 
     // -------------------------------------------------------------------------------------------------
 

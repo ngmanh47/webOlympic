@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserService } from '../../Shared/user.service';
 import { Router } from '@angular/router';
-import { isDefined } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-login-user',
@@ -20,10 +19,10 @@ export class LoginUserComponent implements OnInit {
     this.userService.login(username, password)
     .subscribe((data: any) => {
       localStorage.setItem('token', data['response']['token']); // get token from response
+      localStorage.setItem('id', data['response']['ID']); // get ID from response
       console.log(data);
-      console.log(data['response']['token']);
-     
-      this.router.navigate(['/']);
+
+      this.router.navigate(['/profile/1']);
     },
     (err : HttpErrorResponse)=>{
       this.isLoginError = true;

@@ -26,7 +26,6 @@ const routesConfig: Routes = [
        // management
        { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
        { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},
-
     ]
   },
 
@@ -52,8 +51,6 @@ const routesConfig: Routes = [
   },
   // Login
   { path: 'admin/login', component: LoginAdminComponent, data: {extraParameter: ''}},
-  // Sign up
-  { path: 'admin/signup', component: SignUpAdminComponent, data: {extraParameter: ''}},
 
   {path: '**', redirectTo: ''},
 ]
@@ -61,7 +58,6 @@ const routesConfig: Routes = [
 // -------------------------------------------------------------------------------------------------------
 // admin
 import { LoginAdminComponent } from './Admin/Pages/Login/login-admin.component';
-import { SignUpAdminComponent } from './Admin/Pages/SignUp/sign-up-admin.component'
 
 import { BaseLayoutComponent } from './Admin/Layout/base-layout/base-layout.component';
 

@@ -11,11 +11,16 @@ export class UserService {
   
   }
 
-  registerUser(username, password){
+  registerUser(email, password, name, birthday, sex, university){
     const data = {
-      email: username,
-      password: password
+      email: email,
+      password: password,
+      Name: name,
+      Sex: sex,
+      BirthDate: birthday,
+      university: university
     }
+    console.log(data);
     const headers = { 'content-type': 'application/json'}  
     return this.http.post(this.rootUrl + '/signup', data, {headers : headers});
   }
