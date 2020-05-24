@@ -1,0 +1,115 @@
+export class Account{
+  email:string
+  password:string
+  Name:string
+  Sex:string
+  BirthDate:string
+  Role:Number
+  activate:boolean
+  secrettoken:string
+  createdAt:string
+  updatedAt:string
+  university:{
+    id:string
+    Name:string
+    Code:string
+    EngName:string
+    Address:string
+    Area:string
+    createdAt:string
+    updatedAt:string
+
+  }
+}
+export class SuperAccount{
+  email:string
+  password:string
+  Name:string
+  Sex:string
+  BirthDate:string
+  Role:Number
+  activate:boolean
+  secrettoken:string
+  createdAt:string
+  updatedAt:string
+  university:{
+    id:string
+    Name:string
+    Code:string
+    EngName:string
+    Address:string
+    Area:string
+    createdAt:string
+    updatedAt:string
+
+  }
+}
+export class SchoolAccount{
+  email:string
+  password:string
+  Name:string
+  Sex:string
+  BirthDate:string
+  Role:Number
+  activate:boolean
+  secrettoken:string
+  createdAt:string
+  updatedAt:string
+  university:{
+    id:string
+    Name:string
+    Code:string
+    EngName:string
+    Address:string
+    Area:string
+    createdAt:string
+    updatedAt:string
+
+  }
+}
+export class TeacherAccount{
+  email:string
+  password:string
+  Name:string
+  Sex:string
+  BirthDate:string
+  Role:Number
+  activate:boolean
+  secrettoken:string
+  createdAt:string
+  updatedAt:string
+  university:{
+    id:string
+    Name:string
+    Code:string
+    EngName:string
+    Address:string
+    Area:string
+    createdAt:string
+    updatedAt:string
+
+  }
+}
+export class StudentAccount{
+  email:string
+  password:string
+  Name:string
+  Sex:string
+  BirthDate:string
+  Role:Number
+  activate:boolean
+  secrettoken:string
+  createdAt:string
+  updatedAt:string
+  university:{
+    id:string
+    Name:string
+    Code:string
+    EngName:string
+    Address:string
+    Area:string
+    createdAt:string
+    updatedAt:string
+
+  }
+}

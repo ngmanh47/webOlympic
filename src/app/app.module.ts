@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
 // admin
 // LAYOUT
 import { BaseLayoutComponent } from './Admin/Layout/base-layout/base-layout.component';
@@ -26,7 +27,6 @@ import { AnalyticsComponent } from './Admin/Pages/Components/Dashboards/analytic
 
 // PAGES
 // Management Account
-import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
 import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
 import { LoginAdminComponent } from './Admin/Pages/Login/login-admin.component';
 
@@ -81,7 +81,6 @@ import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
     AnalyticsComponent,
 
     // MANAGEMENT
-    SchoolAdminComponent,
     SuperAdminComponent,
     LoginAdminComponent,
 

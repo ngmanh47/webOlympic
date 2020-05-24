@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-admin.component.css'],
 })
 export class LoginAdminComponent implements OnInit {
-  
+
   isLoginError: boolean = false;
   constructor(private userService: UserService, private router: Router) { }
 
@@ -21,6 +21,7 @@ export class LoginAdminComponent implements OnInit {
     .subscribe((data: any) => {
       localStorage.setItem('token', data['response']['token']); // get token from response
       localStorage.setItem('id', data['response']['ID']); // get ID from response
+      localStorage.setItem('email',username);
       console.log(data);
 
       this.router.navigate(['/admin']);

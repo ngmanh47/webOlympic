@@ -25,7 +25,6 @@ const routesConfig: Routes = [
 
        // management
        { path: 'management/superadmin', component: SuperAdminComponent, data: {extraParameter: ''}},
-       { path: 'management/schooladmin', component: SchoolAdminComponent, data: {extraParameter: ''}},
     ]
   },
 
@@ -90,7 +89,6 @@ import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
 
 
 // management account
-import { SchoolAdminComponent } from './Admin/Pages/Components/Account/SchoolAdmin/school-admin.component';
 import { SuperAdminComponent } from './Admin/Pages/Components/Account/SuperAdmin/super-admin.component';
 
 

@@ -1,115 +1,533 @@
-<div class="main-card mb-3 card">
+<!--------------------------super account management----------------------------->
+<div class="main-card mb-3 card" *ngIf="showForm1">
   <div class="card-body">
-    <h5 class="card-title">Danh sách tài khoản của trường</h5>
-
+    <h2 class="card-title">Danh sách tài khoản của super admin</h2>
     <table class="mb-0 table table-bordered">
       <thead>
         <tr>
-          <th>STT</th>
-          <th>Mã trường</th>
-          <th>Tên trường</th>
-          <th>Tài khoản</th>
-          <th>Mật khẩu</th>
+          <th>email</th>
+          <th>password</th>
+          <th>university</th>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>BirthDay</th>
+          <th>Role</th>
         </tr>
       </thead>
-      <tbody *ngFor="let superad of arrSChoolAccount">
+      <tbody *ngFor="let superad of SuperAccounts$">
         <tr>
-          <th scope="row">{{ superad.STT }}</th>
-          <th>{{ superad.ID }}</th>
+          <th scope="row">{{ superad.email }}</th>
+          <th>{{ superad.password }}</th>
+          <th>{{ superad.university.Name }}</th>
           <th>{{ superad.Name }}</th>
-          <th>{{ superad.Username }}</th>
-          <th>{{ superad.Password }}</th>
+          <th>{{ superad.Sex }}</th>
+          <th>{{ superad.BirthDate }}</th>
+          <th>{{ superad.Role }}</th>
         </tr>
       </tbody>
     </table>
   </div>
+  <div class="mb-2 mr-2">
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right" (click)="getFormDe(1);">Xoá</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormUp(1);">Sửa</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormAdd(1);">Thêm</button>
+  </div>
 </div>
-<div>
-  <button class="mt-2 btn btn-primary col-sm-4" (click)="getFormAdd();">Thêm</button>
-  <button class="mt-2 btn btn-primary col-sm-4" (click)="getFormUp();">Sửa</button>
-  <button class="mt-2 btn btn-primary col-sm-4" (click)="getFormDe();">Xoá</button><br><br>
-</div>
-<div class="tab-content" *ngIf="showFormAdd">
+<div class="tab-content" *ngIf="showFormAdd1">
   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
     <div class="main-card mb-3 card">
       <div class="card-body">
         <h5 class="card-title">Thông tin tài khoản</h5>
-        <!-- <form> -->
         <div class="form-row">
-          <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..." class="form-control"
-              [(ngModel)]="matruong" /></div>
-          <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..." class="form-control"
-              [(ngModel)]="tentruong" /></div>
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control" [(ngModel)]="Sex_edit"/></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control" [(ngModel)]="BirthDate_edit"/></div>
         </div>
         <div class="form-row">
-          <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..." class="form-control"
-              [(ngModel)]="taikhoan" /></div>
-          <div class="position-relative form-group col-md-6">Mật khẩu<input placeholder="..." class="form-control"
-              [(ngModel)]="matkhau" /></div>
+          <select class="form-control col-md-6" name="Tên trường" id="" [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+          </select>
         </div>
-        <button (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
-        <!-- </form> -->
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"[(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="addSchoolAdmin();" class="mt-2 btn btn-primary" >Thêm</button>
       </div>
     </div>
   </div>
 </div>
-<div class="tab-content" *ngIf="showFormUpdate">
-  <h5>Chọn trường : </h5>
+
+<div class="tab-content" *ngIf="showFormUpdate1">
+  <h5>Chọn tài khoản : </h5>
   <select name="CapNhat" (change)="getValueOfSelect($event.target.value)" >
     <optgroup label="Tên">
-      <option> --- chọn trường cần cập nhật----</option>
-      <option *ngFor="let item of arrSChoolAccount" [value]="item.STT-1"> {{ item.Name }}</option> <!--value is index of arr-->
+      <option> --- chọn tài khoản cần cập nhật----</option>
+      <option *ngFor="let item of Accounts$" [value]="item.email"> {{ item.email }}</option>
     </optgroup>
   </select>
   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
     <div class="main-card mb-3 card">
       <div class="card-body">
         <h5 class="card-title">Cập nhật thông tin</h5>
-        <div class="form-row" >
-          <div class="position-relative form-group col-md-6">Mã trường<input placeholder="..." class="form-control"
-              value="{{a}}" [(ngModel)]="matruong"/></div>
-          <div class="position-relative form-group col-md-6">Tên trường<input placeholder="..." class="form-control"
-              value="{{b}}" [(ngModel)]="tentruong" /></div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"
+          value="{{Name}}" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"
+          value="{{Sex}}" [(ngModel)]="Sex_edit" /></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"
+          value="{{BirthDate}}" [(ngModel)]="BirthDate_edit"/></div>
         </div>
         <div class="form-row">
-          <div class="position-relative form-group col-md-6">Tài khoản<input placeholder="..." class="form-control"
-              value="{{c}}" [(ngModel)]="taikhoan" /></div>
-          <div class="position-relative form-group col-md-6">Mật khẩu <input placeholder="..." class="form-control"
-              value="{{d}}" [(ngModel)]="matkhau" /></div>
+          <select class="form-control col-md-6" name="Tên trường" id=""  [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+            <option value="5ec15273e731461fa870b59d">aa</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" disabled
+          value="{{email}}" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control" disabled
+          value="{{password}}" [(ngModel)]="password_edit"/></div>
         </div>
         <button (click)="UpdateSchoolAdmin();" class="mt-2 btn btn-primary">Cập nhật</button>
       </div>
     </div>
   </div>
 </div>
-
-<div class="tab-content" *ngIf="showFormDelete">
-  <h5>Chọn trường : </h5>
+<div class="tab-content" *ngIf="showFormDelete1">
+  <h5>Chọn tài khoản : </h5>
   <select name="Xoa" (change)="getValueOfSelect($event.target.value)" >
     <optgroup label="Tên">
-      <option> --- chọn trường cần xoá----</option>
-      <option *ngFor="let item of arrSChoolAccount" [value]="item.STT-1"> {{ item.Name }}</option> <!--value is index of arr-->
+      <option> --- chọn tài khoản cần xoá----</option>
+      <option *ngFor="let item of Accounts$" [value]=""> {{ item.email }}</option>
     </optgroup>
   </select>
   <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
     <div class="main-card mb-3 card">
       <div class="card-body">
         <h5 class="card-title">Kiểm tra tài khoản trước khi xoá</h5>
-        <!-- <form> -->
-        <div class="form-row">
-          <div class="position-relative form-group col-md-6">Mã trường<input disabled placeholder="..." class="form-control"
-            value="{{a}}" [(ngModel)]="matruong" /></div>
-          <div class="position-relative form-group col-md-6">Tên trường<input disabled placeholder="..." class="form-control"
-            value="{{b}}" [(ngModel)]="tentruong" /></div>
-        </div>
-        <div class="form-row">
-          <div class="position-relative form-group col-md-6">Tài khoản<input disabled placeholder="..." class="form-control"
-            value="{{c}}" [(ngModel)]="taikhoan" /></div>
-          <div class="position-relative form-group col-md-6">Mật khẩu<input disabled placeholder="..." class="form-control"
-            value="{{d}}" [(ngModel)]="matkhau" /></div>
-        </div>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"/></div>
+          </div>
+          <div class="form-row">
+            <select class="form-control col-md-6" name="Tên trường" id="">
+              <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+              <option value="">ĐH Bach Khoa</option>
+              <option value="">ĐH SPKT</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"/></div>
+          </div>
         <button (click)="DeleteSchoolAdmin();" class="mt-2 btn btn-primary">Xoá</button>
-        <!-- </form> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!------------------------School account management------------------------------------->
+<div class="main-card mb-3 card" *ngIf="showForm2">
+  <div class="card-body">
+    <h2 class="card-title">Danh sách tài khoản của trường</h2>
+    <table class="mb-0 table table-bordered">
+      <thead>
+        <tr>
+          <th>email</th>
+          <th>password</th>
+          <th>university</th>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>BirthDay</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let superad of SchoolAccounts$">
+        <tr>
+          <th scope="row">{{ superad.email }}</th>
+          <th>{{ superad.password }}</th>
+          <th>{{ superad.university['Name'] }}</th>
+          <th>{{ superad.Name }}</th>
+          <th>{{ superad.Sex }}</th>
+          <th>{{ superad.BirthDate }}</th>
+          <th>{{ superad.Role }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mb-2 mr-2">
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right" (click)="getFormDe(2);">Xoá</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormUp(2);">Sửa</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormAdd(2);">Thêm</button>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormAdd2">
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Thông tin tài khoản</h5>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control" [(ngModel)]="Sex_edit"/></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control" [(ngModel)]="BirthDate_edit"/></div>
+        </div>
+        <div class="form-row">
+          <select class="form-control col-md-6" name="Tên trường" id="" [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"[(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormUpdate2">
+  <h5>Chọn tài khoản : </h5>
+  <select name="CapNhat" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn tài khoản cần cập nhật----</option>
+      <option *ngFor="let item of Accounts$" [value]="item.email"> {{ item.email }}</option>
+    </optgroup>
+  </select>
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Cập nhật thông tin</h5>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"
+          value="{{Name}}" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"
+          value="{{Sex}}" [(ngModel)]="Sex_edit" /></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"
+          value="{{BirthDate}}" [(ngModel)]="BirthDate_edit"/></div>
+        </div>
+        <div class="form-row">
+          <select class="form-control col-md-6" name="Tên trường" id=""  [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+            <option value="5ec15273e731461fa870b59d">aa</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" disabled
+          value="{{email}}" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control" disabled
+          value="{{password}}" [(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="UpdateSchoolAdmin();" class="mt-2 btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormDelete2">
+  <h5>Chọn tài khoản : </h5>
+  <select name="Xoa" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn tài khoản cần xoá----</option>
+      <option *ngFor="let item of Accounts$" [value]=""> {{ item.email }}</option>
+    </optgroup>
+  </select>
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Kiểm tra tài khoản trước khi xoá</h5>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"/></div>
+          </div>
+          <div class="form-row">
+            <select class="form-control col-md-6" name="Tên trường" id="">
+              <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+              <option value="">ĐH Bach Khoa</option>
+              <option value="">ĐH SPKT</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"/></div>
+          </div>
+        <button (click)="DeleteSchoolAdmin();" class="mt-2 btn btn-primary">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------------------------------------- teacher account management    ---------------------------->
+<div class="main-card mb-3 card" *ngIf="showForm3">
+  <div class="card-body">
+    <h2 class="card-title">Danh sách tài khoản của giáo viên</h2>
+    <table class="mb-0 table table-bordered">
+      <thead>
+        <tr>
+          <th>email</th>
+          <th>password</th>
+          <th>university</th>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>BirthDay</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let superad of TeacherAccounts$">
+        <tr>
+          <th scope="row">{{ superad.email }}</th>
+          <th>{{ superad.password }}</th>
+          <th>{{ superad.university['Name'] }}</th>
+          <th>{{ superad.Name }}</th>
+          <th>{{ superad.Sex }}</th>
+          <th>{{ superad.BirthDate }}</th>
+          <th>{{ superad.Role }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mb-2 mr-2">
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right" (click)="getFormDe(3);">Xoá</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormUp(3);">Sửa</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormAdd(3);">Thêm</button>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormAdd3">
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Thông tin tài khoản</h5>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control" [(ngModel)]="Sex_edit"/></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control" [(ngModel)]="BirthDate_edit"/></div>
+        </div>
+        <div class="form-row">
+          <select class="form-control col-md-6" name="Tên trường" id="" [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"[(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormUpdate3">
+  <h5>Chọn tài khoản : </h5>
+  <select name="CapNhat" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn tài khoản cần cập nhật----</option>
+      <option *ngFor="let item of Accounts$" [value]="item.email"> {{ item.email }}</option>
+    </optgroup>
+  </select>
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Cập nhật thông tin</h5>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"
+          value="{{Name}}" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"
+          value="{{Sex}}" [(ngModel)]="Sex_edit" /></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"
+          value="{{BirthDate}}" [(ngModel)]="BirthDate_edit"/></div>
+        </div>
+        <div class="form-row">
+          <select class="form-control col-md-6" name="Tên trường" id=""  [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+            <option value="5ec15273e731461fa870b59d">aa</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" disabled
+          value="{{email}}" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control" disabled
+          value="{{password}}" [(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="UpdateSchoolAdmin();" class="mt-2 btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormDelete3">
+  <h5>Chọn tài khoản : </h5>
+  <select name="Xoa" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn tài khoản cần xoá----</option>
+      <option *ngFor="let item of Accounts$" [value]=""> {{ item.email }}</option>
+    </optgroup>
+  </select>
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Kiểm tra tài khoản trước khi xoá</h5>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"/></div>
+          </div>
+          <div class="form-row">
+            <select class="form-control col-md-6" name="Tên trường" id="">
+              <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+              <option value="">ĐH Bach Khoa</option>
+              <option value="">ĐH SPKT</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"/></div>
+          </div>
+        <button (click)="DeleteSchoolAdmin();" class="mt-2 btn btn-primary">Xoá</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------- Student account management --------------------------------->
+<div class="main-card mb-3 card" *ngIf="showForm4">
+  <div class="card-body">
+    <h2 class="card-title">Danh sách tài khoản của sinh viên</h2>
+    <table class="mb-0 table table-bordered">
+      <thead>
+        <tr>
+          <th>email</th>
+          <th>password</th>
+          <th>university</th>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>BirthDay</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let superad of StudentAccounts$">
+        <tr>
+          <th scope="row">{{ superad.email }}</th>
+          <th>{{ superad.password }}</th>
+          <th>{{ superad.university['Name'] }}</th>
+          <th>{{ superad.Name }}</th>
+          <th>{{ superad.Sex }}</th>
+          <th>{{ superad.BirthDate }}</th>
+          <th>{{ superad.Role }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mb-2 mr-2">
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right" (click)="getFormDe(4);">Xoá</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormUp(4);">Sửa</button>
+    <button class="mt-2 btn btn-primary col-sm-1 p-2 float-right mr-1" (click)="getFormAdd(4);">Thêm</button>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormAdd4">
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Thông tin tài khoản</h5>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control" [(ngModel)]="Sex_edit"/></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control" [(ngModel)]="BirthDate_edit"/></div>
+        </div>
+        <div class="form-row">
+          <select class="form-control col-md-6" name="Tên trường" id="" [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"[(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="addSchoolAdmin();" class="mt-2 btn btn-primary">Thêm</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormUpdate4">
+  <h5>Chọn tài khoản : </h5>
+  <select name="CapNhat" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn tài khoản cần cập nhật----</option>
+      <option *ngFor="let item of Accounts$" [value]="item.email"> {{ item.email }}</option>
+    </optgroup>
+  </select>
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Cập nhật thông tin</h5>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"
+          value="{{Name}}" [(ngModel)]="Name_edit"/></div>
+          <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"
+          value="{{Sex}}" [(ngModel)]="Sex_edit" /></div>
+          <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"
+          value="{{BirthDate}}" [(ngModel)]="BirthDate_edit"/></div>
+        </div>
+        <div class="form-row">
+          <select class="form-control col-md-6" name="Tên trường" id=""  [(ngModel)]="university_id">
+            <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+            <option value="5ec15273e731461fa870b59d">aa</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control" disabled
+          value="{{email}}" [(ngModel)]="email_edit"/></div>
+          <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control" disabled
+          value="{{password}}" [(ngModel)]="password_edit"/></div>
+        </div>
+        <button (click)="UpdateSchoolAdmin();" class="mt-2 btn btn-primary">Cập nhật</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-content" *ngIf="showFormDelete4">
+  <h5>Chọn tài khoản : </h5>
+  <select name="Xoa" (change)="getValueOfSelect($event.target.value)" >
+    <optgroup label="Tên">
+      <option> --- chọn tài khoản cần xoá----</option>
+      <option *ngFor="let item of Accounts$" [value]=""> {{ item.email }}</option>
+    </optgroup>
+  </select>
+  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+    <div class="main-card mb-3 card">
+      <div class="card-body">
+        <h5 class="card-title">Kiểm tra tài khoản trước khi xoá</h5>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-4">Name<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">Sex<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-4">BirthDay<input placeholder="..." class="form-control"/></div>
+          </div>
+          <div class="form-row">
+            <select class="form-control col-md-6" name="Tên trường" id="">
+              <option value="5ec13aab944804270001165d">ĐH Khoa học tự nhiên - Đại học quốc gia thành phố HCM</option>
+              <option value="">ĐH Bach Khoa</option>
+              <option value="">ĐH SPKT</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="position-relative form-group col-md-6">Email<input placeholder="..." class="form-control"/></div>
+            <div class="position-relative form-group col-md-6">Password<input placeholder="..." class="form-control"/></div>
+          </div>
+        <button (click)="DeleteSchoolAdmin();" class="mt-2 btn btn-primary">Xoá</button>
       </div>
     </div>
   </div>

@@ -40,6 +40,16 @@
                         Dashboard
                     </a>
                 </li>
+                <div *ngIf="true">
+                  <li class="app-sidebar__heading">Account Management</li>
+                  <ul>
+                    <li>
+                      <a *ngIf="true" href="/admin/management/superadmin">
+                        List Account
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 <li class="app-sidebar__heading">Teams</li>
                 <ul>
                 <li>
@@ -89,22 +99,7 @@
                         </a>
                     </li>
                 </ul>
-              <!--*ngIf="checkAcount();"-->
-                <div *ngIf="true">
-                  <li class="app-sidebar__heading">Account Management</li>
-                  <ul>
-                    <li>
-                      <a *ngIf="true" href="/admin/management/superadmin">
-                        Super Admin
-                      </a>
-                    </li>
-                    <li>
-                      <a *ngIf="true" href="/admin/management/schooladmin">
-                        School Admin
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+
             </ul>
         </div>
     </div>
