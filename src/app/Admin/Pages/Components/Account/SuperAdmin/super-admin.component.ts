@@ -60,6 +60,7 @@ export class SuperAdminComponent implements OnInit {
   URL_account='https://strapi-atlas.herokuapp.com/accounts/?token='+localStorage.token+'&id='+localStorage.id;
   URL_add_account='https://strapi-atlas.herokuapp.com/accounts/add';
   URL_up_account='https://strapi-atlas.herokuapp.com/accounts/update';
+  URL_up_delete='https://strapi-atlas.herokuapp.com/accounts/delete';
   // API
   constructor(private httpc: HttpClient) {
     this.getAccount4Role();
@@ -167,15 +168,36 @@ export class SuperAdminComponent implements OnInit {
     this.Name_edit='';
     this.Sex_edit='';
     this.BirthDate_edit='';
+    this.showFormAdd1=false;
+    this.showFormDelete1=false;
+    this.showFormUpdate1=false;
+    this.showFormAdd2=false;
+    this.showFormDelete2=false;
+    this.showFormUpdate2=false;
+    this.showFormAdd3=false;
+    this.showFormDelete3=false;
+    this.showFormUpdate3=false;
+    this.showFormAdd4=false;
+    this.showFormDelete4=false;
+    this.showFormUpdate4=false;
   }
   getFormAdd(role:number){
-    this.resetVar();
+    //this.resetVar();
     if(role==1)
     {
       this.showFormAdd1=!this.showFormAdd1;
       this.showFormDelete1=false;
       this.showFormUpdate1=false;
       this.Role=role;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==2)
     {
@@ -183,6 +205,15 @@ export class SuperAdminComponent implements OnInit {
       this.showFormDelete2=false;
       this.showFormUpdate2=false;
       this.Role=role;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==3)
     {
@@ -190,6 +221,15 @@ export class SuperAdminComponent implements OnInit {
       this.showFormDelete3=false;
       this.showFormUpdate3=false;
       this.Role=role;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==4)
     {
@@ -197,64 +237,149 @@ export class SuperAdminComponent implements OnInit {
       this.showFormDelete4=false;
       this.showFormUpdate4=false;
       this.Role=role;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
     }
   }
   getFormUp(role:number){
-
     //this.resetVar();
     if(role==1)
     {
       this.showFormAdd1=false
       this.showFormDelete1=false;
       this.showFormUpdate1=!this.showFormUpdate1;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==2)
     {
       this.showFormAdd2=false
       this.showFormDelete2=false;
       this.showFormUpdate2=!this.showFormUpdate2;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==3)
     {
       this.showFormAdd3=false
       this.showFormDelete3=false;
       this.showFormUpdate3=!this.showFormUpdate3;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==4)
     {
       this.showFormAdd1=false
       this.showFormDelete1=false;
       this.showFormUpdate4=!this.showFormUpdate4;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
     }
   }
   getFormDe(role:number){
-    //this.resetVar();
     if(role==1)
     {
       this.showFormAdd1=false;
       this.showFormDelete1=! this.showFormDelete1;
       this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
+
     }
     else if(role==2)
     {
       this.showFormAdd2=false;
       this.showFormDelete2=! this.showFormDelete2;
       this.showFormUpdate2=false;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==3)
     {
       this.showFormAdd3=false;
       this.showFormDelete3=! this.showFormDelete3;
       this.showFormUpdate3=false;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd4=false;
+      this.showFormDelete4=false;
+      this.showFormUpdate4=false;
     }
     else if(role==4)
     {
       this.showFormAdd4=false;
       this.showFormDelete4=! this.showFormDelete4;
       this.showFormUpdate4=false;
+      this.showFormAdd1=false;
+      this.showFormDelete1=false;
+      this.showFormUpdate1=false;
+      this.showFormAdd2=false;
+      this.showFormDelete2=false;
+      this.showFormUpdate2=false;
+      this.showFormAdd3=false;
+      this.showFormDelete3=false;
+      this.showFormUpdate3=false;
+
     }
   }
-  postAddSchoolAdmin(){
+  postAddAccount(){
+    if(this.email_edit=='' || this.password_edit==''|| this.university_id=='' || this.Name_edit=='' || this.Sex_edit=='' || this.BirthDate_edit=='' ){
+      alert('Không được bỏ trống');
+      return;
+    }
     return this.httpc.post(this.URL_add_account,{
       'token':localStorage.token,
       'id':localStorage.id,
@@ -267,8 +392,8 @@ export class SuperAdminComponent implements OnInit {
       'Role':this.Role
     })
   }
-  addSchoolAdmin(){
-    this.postAddSchoolAdmin()
+  addAccount(){
+    this.postAddAccount()
     .subscribe(temp=>{
       console.log(temp);
       window.alert('Thêm thành công');
@@ -276,7 +401,8 @@ export class SuperAdminComponent implements OnInit {
     })
     //this.resetVar();
   }
-  postUpdateSchoolAdmin(){
+  postUpdateAccount(){
+
     if(this.Name_edit!=""){
       this.Name=this.Name_edit;
     }
@@ -287,14 +413,12 @@ export class SuperAdminComponent implements OnInit {
       this.BirthDate=this.BirthDate_edit;
     }
     // value is university id
-    let httpHeaders = new HttpHeaders({
-      'x-access-token': localStorage.token
-    });
-    //
-    httpHeaders=httpHeaders.append("Access-Control-Allow-Origin", "*")
-    httpHeaders=httpHeaders.append("Access-Control-Allow-Headers", "*");
-    let options = {
-      headers: httpHeaders,
+
+    const options = {
+      headers:new HttpHeaders({
+        'x-access-token':localStorage.token,
+        'Content-Type':'text/plain'
+      })
     };
     return this.httpc.post(this.URL_up_account, {
       "id":localStorage.id,
@@ -308,16 +432,38 @@ export class SuperAdminComponent implements OnInit {
       }
     }, options);
   }
-  UpdateSchoolAdmin(){
-    this.postUpdateSchoolAdmin()
+  UpdateAccount(){
+    this.postUpdateAccount()
     .subscribe(temp=>{
         console.log(temp);
     })
-    //this.resetVar();
+    this.resetVar();
+    location.reload();
   }
-  DeleteSchoolAdmin(){
+  postDeleteAccount(){
+    const options = {
+      headers:new HttpHeaders({
+        'x-access-token':localStorage.token,
+        'Content-Type':'text/plain'
+      })
+    };
+    return this.httpc.post(this.URL_up_delete, {
+      "id":localStorage.id,
+      "ListUser":[
+        {
+          "email":this.email
+        }
+      ]
+    }, options);
+  }
+  DeleteAccount(){
+    this.postDeleteAccount()
+    .subscribe(temp=>{
+        console.log(temp);
 
-  //   this.resetVar();
+    })
+    location.reload();
+    this.resetVar();
   }
   ngOnInit() {
   }
