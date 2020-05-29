@@ -412,15 +412,13 @@ export class SuperAdminComponent implements OnInit {
     if(this.BirthDate_edit!=""){
       this.BirthDate=this.BirthDate_edit;
     }
-    // value is university id
-
     const options = {
       headers:new HttpHeaders({
-        'x-access-token':localStorage.token,
         'Content-Type':'text/plain'
       })
     };
     return this.httpc.post(this.URL_up_account, {
+      "token":localStorage.token,
       "id":localStorage.id,
       "User":
       {
@@ -430,7 +428,7 @@ export class SuperAdminComponent implements OnInit {
         "BirthDate":this.BirthDate,
         "university":this.university_id
       }
-    }, options);
+    },options);
   }
   UpdateAccount(){
     this.postUpdateAccount()
@@ -443,11 +441,11 @@ export class SuperAdminComponent implements OnInit {
   postDeleteAccount(){
     const options = {
       headers:new HttpHeaders({
-        'x-access-token':localStorage.token,
         'Content-Type':'text/plain'
       })
     };
     return this.httpc.post(this.URL_up_delete, {
+      "token":localStorage.token,
       "id":localStorage.id,
       "ListUser":[
         {
