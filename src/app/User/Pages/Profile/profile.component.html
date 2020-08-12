@@ -116,31 +116,34 @@
           <div class="modal-body">
             <div class="row m-2">
               <label class="col-3">MSSV: </label>
-              <input type="text" readonly placeholder="1712626" class="form-control col-8">
-            </div>
-            <div class="row m-2">
-              <label class="col-3">Tên: </label>
-              <input [value]="inforUser.Name"
-            (input)="inforUserEdit.Name = $event.target.value" type="text" class="form-control col-8">
+              <input type="text" readonly placeholder="1712589" class="form-control col-8">
             </div>
             <div class="row m-2">
               <label class="col-3">Email: </label>
               <input [value]="inforUser.email"
-            (input)="inforUserEdit.email = $event.target.value" type="text" class="form-control col-8">
+            (input)="email = $event.target.value" type="text" readonly class="form-control col-8">
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Tên: </label>
+              <input [value]="inforUser.Name"
+            (input)="Name = $event.target.value" type="text" class="form-control col-8">
             </div>
             <div class="row m-2">
               <label class="col-3">Giới tính: </label>
-              <select class="col-8" name="Tên trường" id="selectSchool">
+              <select class="col-8" name="Tên trường" id="selectSex">
                 <option value="{{inforUser.Sex}}">{{inforUser.Sex}}</option>
                 <option value="Nam">Nam</option>
                 <option value="Nữ">Nữ</option>
                 <option value="Khác">Khác</option>
               </select>
             </div>
-            <div class="row m-2">
+            <div class="row m-2 datetimepicker" data-provide="datepicker">
               <label class="col-3">Ngày sinh: </label>
               <input [value]="inforUser.BirthDate"
-            (input)="inforUserEdit.BirthDate = $event.target.value" type="text" class="form-control col-8">
+            (input)="BirthDate = $event.target.value"  type="text" class="form-control col-8 " >
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
             </div>
             <div class="row m-2">
               <label class="col-3">Trường: </label>
@@ -164,5 +167,4 @@
       </div>
   </div>
 </div>
-
 

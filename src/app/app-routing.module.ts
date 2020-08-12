@@ -86,7 +86,7 @@ import { HomeUserComponent } from './User/Pages/Home/home-user.component';
 import { ContactUserComponent } from './User/Pages/Contact/contact-user.component';
 import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-user.component';
 import { ProfileComponent } from './User/Pages/Profile/profile.component';
-import { EditPassWordComponent } from './User/Pages/Profile/EditPassword/edit-password.component';
+import { EditPassWordComponent } from './User/Pages/Profile/EditPassWord/edit-password.component';
 import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
 
 

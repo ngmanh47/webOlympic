@@ -34,7 +34,7 @@ export class EditPassWordComponent implements OnInit {
     this.postCapNhatMatKhau()
     .subscribe(
       response => {
-        console.log("ok",response)
+        Swal.fire('Thành công', response, 'success');
       },
       err => {
         if( err[`error`].text=="Cap nhat mat khau khong thanh cong !")
