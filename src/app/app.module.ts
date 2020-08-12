@@ -57,6 +57,7 @@ import { LoginUserComponent } from './User/Pages/Login/login-user.component';
 import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component';
 import { ProfileComponent } from './User/Pages/Profile/profile.component';
 import { EditPassWordComponent } from './User/Pages/Profile/EditPassWord/edit-password.component';
+import { OlympicListComponent } from './User/Pages/Profile/OlympicList/olympic-list.component';
 import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -114,6 +115,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     EditPassWordComponent,
     SponsorComponent,
+    OlympicListComponent,
   ],
   imports: [
     BrowserModule,
