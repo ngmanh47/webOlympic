@@ -10,6 +10,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class OlympicListComponent implements OnInit {
 
+  olympicList: any = [];
   oldPassword:string = '';
   newPassword:string = '' ;
   confirmPassword:string = '' ;
@@ -18,53 +19,55 @@ export class OlympicListComponent implements OnInit {
 
   ngOnInit() {
   }
-  XoaDulieu(){
-    this.oldPassword='';
-    this.newPassword='';
+  GuiYeuCauCapNhat(){
+    Swal.fire('Thành công', 'Chờ API', 'success');
   }
-  CapNhatMatKhau(){
-    if(this.oldPassword == "" || this.newPassword == "" || this.confirmPassword == ""){
-    Swal.fire('Lỗi người dùng', 'Không được bỏ trống dữ liệu', 'warning')
-      return;
-    }
-    if(this.newPassword != this.confirmPassword){
-      Swal.fire('Lỗi người dùng', 'Mật khẩu không khớp', 'warning')
-      return;
-    }
-    this.postCapNhatMatKhau()
-    .subscribe(
-      response => {
-        Swal.fire('Thành công', response, 'success');
-      },
-      err => {
-        if( err[`error`].text=="Cap nhat mat khau khong thanh cong !")
-        {
-          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning');
-          return;
-        }
-        else Swal.fire('Thành công', err[`error`].text, 'success');
-      }
-    )
+  DangKyTeamOlympic(){
+    Swal.fire('Thành công', 'Chờ API', 'success');
+  }
+  CapNhatDanhSach(){
+    // if(this.oldPassword == "" || this.newPassword == "" || this.confirmPassword == ""){
+    // Swal.fire('Lỗi người dùng', 'Không được bỏ trống dữ liệu', 'warning')
+    //   return;
+    // }
+    // if(this.newPassword != this.confirmPassword){
+    //   Swal.fire('Lỗi người dùng', 'Mật khẩu không khớp', 'warning')
+    //   return;
+    // }
+    // this.postCapNhatDanhSach()
+    // .subscribe(
+    //   response => {
+    //     Swal.fire('Thành công', response, 'success');
+    //   },
+    //   err => {
+    //     if( err[`error`].text=="Cap nhat mat khau khong thanh cong !")
+    //     {
+    //       Swal.fire('Lỗi người dùng', err[`error`].text, 'warning');
+    //       return;
+    //     }
+    //     else Swal.fire('Thành công', err[`error`].text, 'success');
+    //   }
+    // )
 
-    this.oldPassword='';
-    this.newPassword='';
-    this.confirmPassword='';
+    // this.oldPassword='';
+    // this.newPassword='';
+    // this.confirmPassword='';
     //location.reload();
 
   }
-  postCapNhatMatKhau(){
+  postCapNhatDanhSach(){
     const options = {
       headers:new HttpHeaders({
         accept: 'text/plain',
         'Content-Type': 'application/json'
       })
     };
-    var dataPost = {
-      id:localStorage.id,
-      token: localStorage.token,
-      oldpassword:this.oldPassword,
-      newpassword:this.newPassword
-    }
-    return this.httpc.post(this.URL_up_password,JSON.stringify(dataPost),options);
+    // var dataPost = {
+    //   id:localStorage.id,
+    //   token: localStorage.token,
+    //   oldpassword:this.oldPassword,
+    //   newpassword:this.newPassword
+    // }
+    // return this.httpc.post(this.URL_up_password,JSON.stringify(dataPost),options);
   }
 }

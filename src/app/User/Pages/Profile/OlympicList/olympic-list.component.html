@@ -37,39 +37,110 @@
       </div>
       <div class="col-12 col-lg-10">
           <div class="card" style="width: 100%;">
-            <div class="card-header">
+            <div class="card-header row m-2">
               <div class="col">
-                <h5>Chỉnh sửa mật khẩu</h5>
+                <h5>Lịch sử tham gia Olympic tin học qua từng năm</h5>
+              </div>
+              <div style="float:right">
+                <button id="clickDangKyOlympic" data-toggle="modal" data-target="#DangKyOlympic" type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Đăng ký</button>
               </div>
           </div>
           <div class="card-body">
-            <div>
-              <label>Mật khẩu cũ</label>
+            <table class="mb-0 table table-bordered">
+              <thead>
+                <tr>
+                  <th>Khối thi</th>
+                  <th>Giải thưởng</th>
+                  <th>Trạng thái</th>
+                  <th>Năm thi</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let superad of olympicList">
+                <tr>
+                  <th scope="row">{{ superad.email }}</th>
+                  <th>{{ superad.Name }}</th>
+                  <th>{{ superad.university.Name }}</th>
+                  <th>{{ superad.university.Code }}</th>
+                  <th>{{ superad.Sex }}</th>
+                </tr>
+              </tbody>
+            </table>
+            <div style="float:right">
+              <button id="clickYeuCauCapNhat" data-toggle="modal" data-target="#YeuCauCapNhat" type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Yêu cầu cập nhật</button>
             </div>
-            <div>
-              <input [value]="oldPassword"
-              (input)="oldPassword = $event.target.value" type="password"class="form-control">
-            </div>
-            <div>
-              <label>Mật khẩu mới</label>
-            </div>
-            <div>
-              <input [value]="newPassword"
-              (input)="newPassword = $event.target.value" type="password"class="form-control">
-            </div>
-            <div>
-              <label>Nhập lại mật khẩu</label>
-            </div>
-            <div>
-              <input [value]="confirmPassword"
-              (input)="confirmPassword = $event.target.value" type="password"class="form-control">
-            </div>
-          </div>
-          <div class="mr-0">
-            <button (click)="XoaDulieu();" type="button" class=" ml-3 mt-2 mb-3 btn btn-secondary">Xoá dữ liệu</button>
-            <button (click)="CapNhatMatKhau();" type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Lưu mật khẩu</button>
           </div>
       </div>
   </div>
 </div>
 
+
+<div class="modal" id="DangKyOlympic" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2 class="modal-title text-center">Đăng ký thi Olympic</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body row">
+            <div class="col-6">
+              <label >Chọn khối thi: </label>
+              <input type="text" readonly placeholder="ICPC">
+            </div>
+            <div class="col-6">
+              <label class="col-12">Chọn đội thi: </label>
+              <select name="" id="" style="width:100%">
+                <option value="">--- Chọn tên đôi ---</option>
+                <option value="01">HCMUS 01</option>
+                <option value="02">HCMUS 02</option>
+                <option value="03">HCMUS 03</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
+              <button (click)="DangKyTeamOlympic();" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Đăng ký</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal" id="YeuCauCapNhat" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2 class="modal-title text-center">Đăng ký thi Olympic</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body row">
+            <div class="col-6">
+              <label >Chọn khối thi: </label>
+              <input type="text" readonly placeholder="ICPC">
+            </div>
+            <div class="col-6">
+              <label class="col-12">Chọn đội thi: </label>
+              <select name="" id="" style="width:100%">
+                <option value="">--- Chọn tên đôi ---</option>
+                <option value="01">HCMUS 01</option>
+                <option value="02">HCMUS 02</option>
+                <option value="03">HCMUS 03</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label>Nội dung</label>
+              <textarea id="" name="" class="form-control" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 111px;"></textarea>
+            </div>
+            <div class="col-12">
+              <label class="col-12">File đính kèm (minh chứng)</label>
+              <button >Chọn file đính kèm<i class="fa fa-file-upload"></i></button>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
+              <button (click)="GuiYeuCauCapNhat();" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Gửi</button>
+          </div>
+      </div>
+  </div>
+</div>
