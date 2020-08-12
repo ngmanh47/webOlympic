@@ -56,6 +56,7 @@ import { UserService } from './User/Shared/user.service';
 import { LoginUserComponent } from './User/Pages/Login/login-user.component';
 import { SignUpUserComponent } from './User/Pages/SignUp/sign-up-user.component';
 import { ProfileComponent } from './User/Pages/Profile/profile.component';
+import { EditPassWordComponent } from './User/Pages/Profile/EditPassWord/edit-password.component';
 import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
 
 @NgModule({
@@ -110,6 +111,7 @@ import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
     LoginUserComponent,
     SignUpUserComponent,
     ProfileComponent,
+    EditPassWordComponent,
     SponsorComponent,
   ],
   imports: [

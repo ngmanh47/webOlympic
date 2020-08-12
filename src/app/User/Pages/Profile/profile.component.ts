@@ -23,9 +23,6 @@ export class ProfileComponent implements OnInit {
   }
   getUser(){
     this.getData(localStorage.token, localStorage.id).subscribe((data) => {
-      // console.log(data);
-      // console.log(data['temp']);
-      // console.log(data['temp'][0]);
       this.inforUser = data['temp'][0];
     });
   }
