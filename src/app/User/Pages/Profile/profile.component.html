@@ -56,8 +56,8 @@
                         <div>Birthday:</div>
                     </div>
                     <div>
-                        <div>Nguyen Ngoc Manh</div>
-                        <div>21/04/1999</div>
+                        <div>{{inforUser.Name}}</div>
+                        <div>{{inforUser.BirthDate}}</div>
                     </div>
                    </div>
                 </div>
@@ -66,11 +66,11 @@
         <div class="col-12 col-lg-6">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    <div class="col-md-11">
+                    <div class="col-md-10">
                       <h5>ABOUT ME</h5>
                     </div>
-                    <div class="col-md-1">
-                      <button class="btn btn-primary mr-2"><i class="icon-md fas fa-edit"></i></button>
+                    <div class="col-md-2">
+                      <button id="clickEditProfile" data-toggle="modal" data-target="#EditProfile" class="btn btn-primary mr-2"><i class="icon-md fas fa-edit"></i></button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -88,18 +88,14 @@
                             </div>
                             <div>
                                 <div>1712589</div>
-                                <div>Nguyễn Ngọc Mạnh</div>
-                                <div>1712589@student.hcmus.edu.vn</div>
-                                <div>Nam</div>
-                                <div>21/04/1999</div>
-                                <!-- <div>{{inforUser.Name}}</div>
+                                <div>{{inforUser.Name}}</div>
                                 <div>{{inforUser.email}}</div>
                                 <div>{{inforUser.Sex}}</div>
-                                <div>{{inforUser.BirthDate}}</div> -->
-                                <div>Đại học Khoa học Tự nhiên - ĐHQG Tp.HCM</div>
+                                <div>{{inforUser.BirthDate}}</div>
+                                <div>{{inforUser.university.Name}}</div>
                                 <div>Siêu cúp</div>
                             </div>
-                           </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
@@ -107,3 +103,66 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="EditProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2 class="modal-title">Chỉnh sửa hồ sơ cá nhân</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="row m-2">
+              <label class="col-3">MSSV: </label>
+              <input type="text" readonly placeholder="1712626" class="form-control col-8">
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Tên: </label>
+              <input [value]="inforUser.Name"
+            (input)="inforUserEdit.Name = $event.target.value" type="text" class="form-control col-8">
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Email: </label>
+              <input [value]="inforUser.email"
+            (input)="inforUserEdit.email = $event.target.value" type="text" class="form-control col-8">
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Giới tính: </label>
+              <select class="col-8" name="Tên trường" id="selectSchool">
+                <option value="{{inforUser.Sex}}">{{inforUser.Sex}}</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+              </select>
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Ngày sinh: </label>
+              <input [value]="inforUser.BirthDate"
+            (input)="inforUserEdit.BirthDate = $event.target.value" type="text" class="form-control col-8">
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Trường: </label>
+              <select class="col-8" name="Tên trường" id="selectSchool">
+                <option value="{{inforUser.university.id}}">{{inforUser.university.Name}}</option>
+                <option value="5ec13aab944804270001165d">Đại học Khoa học Tự nhiên thành phố Hồ Chí Minh</option>
+                <option value="1">ĐH Bach Khoa</option>
+                <option value="2">ĐH SPKT</option>
+                <option value="5ec15273e731461fa870b59d">aa</option>
+              </select>
+            </div>
+            <div class="row m-2">
+              <label class="col-3">Khối thi: </label>
+              <input readonly placeholder="Siêu cúp" type="text" class="form-control col-8">
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Thoát</button>
+              <button type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" (click)="updateProfile();">Lưu thay đổi</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
