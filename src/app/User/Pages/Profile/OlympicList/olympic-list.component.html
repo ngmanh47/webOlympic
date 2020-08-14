@@ -50,18 +50,17 @@
               <thead>
                 <tr>
                   <th>Khối thi</th>
-                  <th>Giải thưởng</th>
-                  <th>Trạng thái</th>
+                  <th>Tên đội</th>
+                  <th>Cấp bậc</th>
                   <th>Năm thi</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let superad of olympicList">
+              <tbody *ngFor="let item of olympicList$">
                 <tr>
-                  <th scope="row">{{ superad.email }}</th>
-                  <th>{{ superad.Name }}</th>
-                  <th>{{ superad.university.Name }}</th>
-                  <th>{{ superad.university.Code }}</th>
-                  <th>{{ superad.Sex }}</th>
+                  <th scope="row">ICPC</th>
+                  <th>{{ item.Name }}</th>
+                  <th>{{ item.Rank }}</th>
+                  <th>{{ item.Year }}</th>
                 </tr>
               </tbody>
             </table>
@@ -109,7 +108,7 @@
   <div class="modal-dialog modal-dialog-centered modal-x" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h2 class="modal-title text-center">Đăng ký thi Olympic</h2>
+              <h2 class="modal-title">Yêu cầu cập nhật thành tích</h2>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>

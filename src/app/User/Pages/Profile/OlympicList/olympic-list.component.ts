@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-
 @Component({
   selector: 'app-olympic-list',
   templateUrl: './olympic-list.component.html',
@@ -10,7 +9,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class OlympicListComponent implements OnInit {
 
-  olympicList: any = [];
+  olympicList$:any=[]
   oldPassword:string = '';
   newPassword:string = '' ;
   confirmPassword:string = '' ;
@@ -18,6 +17,7 @@ export class OlympicListComponent implements OnInit {
   constructor(private httpc: HttpClient) { }
 
   ngOnInit() {
+    this.CapNhatDanhSach();
   }
   GuiYeuCauCapNhat(){
     Swal.fire('Thành công', 'Chờ API', 'success');
@@ -26,48 +26,13 @@ export class OlympicListComponent implements OnInit {
     Swal.fire('Thành công', 'Chờ API', 'success');
   }
   CapNhatDanhSach(){
-    // if(this.oldPassword == "" || this.newPassword == "" || this.confirmPassword == ""){
-    // Swal.fire('Lỗi người dùng', 'Không được bỏ trống dữ liệu', 'warning')
-    //   return;
-    // }
-    // if(this.newPassword != this.confirmPassword){
-    //   Swal.fire('Lỗi người dùng', 'Mật khẩu không khớp', 'warning')
-    //   return;
-    // }
-    // this.postCapNhatDanhSach()
-    // .subscribe(
-    //   response => {
-    //     Swal.fire('Thành công', response, 'success');
-    //   },
-    //   err => {
-    //     if( err[`error`].text=="Cap nhat mat khau khong thanh cong !")
-    //     {
-    //       Swal.fire('Lỗi người dùng', err[`error`].text, 'warning');
-    //       return;
-    //     }
-    //     else Swal.fire('Thành công', err[`error`].text, 'success');
-    //   }
-    // )
-
-    // this.oldPassword='';
-    // this.newPassword='';
-    // this.confirmPassword='';
-    //location.reload();
-
-  }
-  postCapNhatDanhSach(){
-    const options = {
-      headers:new HttpHeaders({
-        accept: 'text/plain',
-        'Content-Type': 'application/json'
+      this.getDanhSach()
+      .subscribe(temp=>{
+        this.olympicList$=temp['history'];
+        this.olympicList$ = Array.of(this.olympicList$);
       })
-    };
-    // var dataPost = {
-    //   id:localStorage.id,
-    //   token: localStorage.token,
-    //   oldpassword:this.oldPassword,
-    //   newpassword:this.newPassword
-    // }
-    // return this.httpc.post(this.URL_up_password,JSON.stringify(dataPost),options);
+  }
+  getDanhSach(){
+    return this.httpc.get('https://strapi-atlas.herokuapp.com/accounts/history?id='+localStorage.id+'&token='+localStorage.token);
   }
 }

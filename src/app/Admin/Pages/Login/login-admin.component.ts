@@ -17,7 +17,7 @@ export class LoginAdminComponent implements OnInit {
   }
 
   OnSubmit(username, password){
-    this.userService.login(username, password)
+    this.userService.login1(username, password)
     .subscribe((data: any) => {
       localStorage.setItem('token', data['response']['token']); // get token from response
       localStorage.setItem('id', data['response']['ID']); // get ID from response

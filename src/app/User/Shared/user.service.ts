@@ -37,4 +37,12 @@ export class UserService {
     const headers = { 'content-type': 'application/json'}
     return this.http.post(this.rootUrl + '/signin-student', data, {headers: headers});
   }
+  login1(username, password){
+    var data = {
+      email: username,
+      password: password
+    }
+    const headers = { 'content-type': 'application/json'}
+    return this.http.post(this.rootUrl + '/signin', data, {headers: headers});
+  }
 }
