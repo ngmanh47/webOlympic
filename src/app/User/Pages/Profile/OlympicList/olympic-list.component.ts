@@ -33,6 +33,6 @@ export class OlympicListComponent implements OnInit {
       })
   }
   getDanhSach(){
-    return this.httpc.get('https://strapi-atlas.herokuapp.com/accounts/history?id='+localStorage.id+'&token='+localStorage.token);
+    return this.httpc.get('https://strapi-atlas.herokuapp.com/icpc-teams/find-all-icpc-history?id='+localStorage.id+'&token='+localStorage.token);
   }
 }

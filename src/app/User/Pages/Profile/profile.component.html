@@ -1,176 +1,221 @@
 <div class="container">
-    <div class="row profile-container">
-        <div class="col-12 col-lg-2" style="border-right: 1px solid #888888;">
-            <h4 >User Profile</h4>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="border-top: none;">
-                    <a href="/profile/1" style="text-decoration: none; color: #888888;">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        User profile
-                    </a>
-                </li>
-                <li class="list-group-item" style="border-top: none;">
-                    <a href="" style="text-decoration: none; color: #888888;">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        Achievements
-                    </a>
-                </li>
-                <li class="list-group-item" style="border-top: none;">
-                    <a href="" style="text-decoration: none; color: #888888;">
-                        <i class="fa fa-bell" aria-hidden="true"></i>
-                        Notifications
-                    </a>
-                </li>
-                <li class="list-group-item" style="border-top: none;">
-                    <a href="/profile/1/editpassword" style="text-decoration: none; color: #888888;">
-                        <i class="fa fa-key" aria-hidden="true"></i>
-                        Edit password
-                    </a>
-                </li>
-                <li class="list-group-item" style="border-top: none;">
-                    <a href="/profile/1/olympiclist" style="text-decoration: none; color: #888888;">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        ICPC list
-                    </a>
-                </li>
-                <li class="list-group-item" style="border-top: none;">
-                    <a href="/profile/1/olympiclist2" style="text-decoration: none; color: #888888;">
-                        <i class="fa fa-list" aria-hidden="true"></i>
-                        Olympic list
-                    </a>
-                </li>
-              </ul>
-        </div>
-        <div class="col-12 col-lg-4">
-            <div class="card mb-4" style="max-width: 18rem;">
-                <div class="card-header">
-                    <h5>PROFESSIONAL PROFILE</h5>
-                </div>
-                <div class="card-body">
-                    <!-- avater -->
-                    <div class="profile-image">
-                        <img src="../../../../assets/user/img/profile.jpg" width="100%" height="220px"
-                            alt="profile-image">
-                    </div>
-                    <!-- infor simple -->
-
-                </div>
-                <div class="card-footer">
-                   <div class="flex-container">
-                    <div class="mr-4">
-                        <div>Name:</div>
-                        <div>Birthday:</div>
-                    </div>
-                    <div>
-                        <div>{{inforUser.Name}}</div>
-                        <div>{{inforUser.BirthDate}}</div>
-                    </div>
-                   </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
-            <div class="card" style="width: 100%;">
-                <div class="card-header">
-                    <div class="col-md-10">
-                      <h5>ABOUT ME</h5>
-                    </div>
-                    <div class="col-md-2">
-                      <button id="clickEditProfile" data-toggle="modal" data-target="#EditProfile" class="btn btn-primary mr-2"><i class="icon-md fas fa-edit"></i></button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="flex-container">
-                            <div class="ml-3 mr-4">
-                                <div>MSSV:</div>
-                                <div>Name:</div>
-                                <div>Email:</div>
-                                <div>Sex:</div>
-                                <div>Birthday:</div>
-                                <div>University:</div>
-                                <div>Khối thi:</div>
-
-                            </div>
-                            <div>
-                                <div>1712589</div>
-                                <div>{{inforUser.Name}}</div>
-                                <div>{{inforUser.email}}</div>
-                                <div>{{inforUser.Sex}}</div>
-                                <div>{{inforUser.BirthDate}}</div>
-                                <div>{{inforUser.university.Name}}</div>
-                                <div>Siêu cúp</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-            </div>
-        </div>
+  <div class="row profile-container">
+    <div class="col-12 col-lg-2" style="border-right: 1px solid #888888;">
+      <h4>User Profile</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            User profile
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            Achievements
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            Notifications
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1/editpassword" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-key" aria-hidden="true"></i>
+            Edit password
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1/icpclist" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            ICPC list
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1/olympiclist" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Olympic list
+          </a>
+        </li>
+      </ul>
     </div>
+    <div class="col-12 col-lg-4">
+      <div class="card mb-4" style="max-width: 18rem;">
+        <div class="card-header">
+          <h5>PROFESSIONAL PROFILE</h5>
+        </div>
+        <div class="card-body">
+          <!-- avater -->
+          <div class="profile-image">
+            <img src="../../../../assets/user/img/profile.jpg" width="100%" height="220px" alt="profile-image">
+          </div>
+          <!-- infor simple -->
+
+        </div>
+        <div class="card-footer">
+          <div class="flex-container">
+            <div class="mr-4">
+              <div>Name:</div>
+              <div>Birthday:</div>
+            </div>
+            <div>
+              <div>{{inforUser.Name}}</div>
+              <div>{{inforUser.BirthDate}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="card" style="width: 100%;">
+        <div class="card-header">
+          <div class="col-md-10">
+            <h5>ABOUT ME</h5>
+          </div>
+          <div class="col-md-2">
+            <button id="clickEditProfile" data-toggle="modal" data-target="#EditProfile" class="btn btn-primary mr-2"><i
+                class="icon-md fas fa-edit"></i></button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="flex-container">
+              <div class="ml-3 mr-4">
+                <div>MSSV:</div>
+                <div>Name:</div>
+                <div>Email:</div>
+                <div>Sex:</div>
+                <div>Birthday:</div>
+                <div>University:</div>
+              </div>
+              <div>
+                <div>1712589</div>
+                <div>{{inforUser.Name}}</div>
+                <div>{{inforUser.email}}</div>
+                <div>{{inforUser.Sex}}</div>
+                <div>{{inforUser.BirthDate}}</div>
+                <div>{{inforUser.university.Name}}</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <br>
+            <br>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-6">
+              <div>Khối thi:</div>
+              <div>Tên team:</div>
+            </div>
+            <div class="col-6">
+              <div>ICPC</div>
+              <div>{{inforUser.icpcteam.Name}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-10">
+            <button type="button" class="btn btn-secondary  font-weight-bold" (click)="XoaTeam(inforUser.icpcteam.id);">Huỷ tham gia</button>
+            <button type="button" class="btn btn-primary font-weight-bold mr-2" id="clickUpdateName" data-toggle="modal" data-target="#UpdateName">Cập nhật tên đội</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal" id="EditProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Chỉnh sửa hồ sơ cá nhân</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row m-2">
+          <label class="col-3">MSSV: </label>
+          <input type="text" readonly placeholder="1712589" class="form-control col-8">
+        </div>
+        <div class="row m-2">
+          <label class="col-3">Email: </label>
+          <input [value]="inforUser.email" (input)="email = $event.target.value" type="text" readonly
+            class="form-control col-8">
+        </div>
+        <div class="row m-2">
+          <label class="col-3">Tên: </label>
+          <input [value]="inforUser.Name" (input)="Name = $event.target.value" type="text" class="form-control col-8">
+        </div>
+        <div class="row m-2">
+          <label class="col-3">Giới tính: </label>
+          <select class="col-8" name="Tên trường" id="selectSex">
+            <option value="{{inforUser.Sex}}">{{inforUser.Sex}}</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+            <option value="Khác">Khác</option>
+          </select>
+        </div>
+        <div class="row m-2 datetimepicker" data-provide="datepicker">
+          <label class="col-3">Ngày sinh: </label>
+          <input [value]="inforUser.BirthDate" (input)="BirthDate = $event.target.value" type="text"
+            class="form-control col-8 ">
+          <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+          </div>
+        </div>
+        <div class="row m-2">
+          <label class="col-3">Trường: </label>
+          <select class="col-8" name="Tên trường" id="selectSchool">
+            <option value="{{inforUser.university.id}}">{{inforUser.university.Name}}</option>
+            <option value="5ec13aab944804270001165d">Đại học Khoa học Tự nhiên thành phố Hồ Chí Minh</option>
+            <option value="1">ĐH Bach Khoa</option>
+            <option value="2">ĐH SPKT</option>
+            <option value="5ec15273e731461fa870b59d">aa</option>
+          </select>
+        </div>
+        <div class="row m-2">
+          <label class="col-3">Khối thi: </label>
+          <input readonly placeholder="Siêu cúp" type="text" class="form-control col-8">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold"
+          data-dismiss="modal">Thoát</button>
+        <button type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2"
+          (click)="updateProfile();">Lưu thay đổi</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="UpdateName" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h2 class="modal-title">Chỉnh sửa hồ sơ cá nhân</h2>
+              <h2 class="modal-title text-center">Cập nhật tên đội</h2>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
-          <div class="modal-body">
-            <div class="row m-2">
-              <label class="col-3">MSSV: </label>
-              <input type="text" readonly placeholder="1712589" class="form-control col-8">
+          <div class="modal-body row">
+            <div class="col-6">
+              <label >Tên đội thi </label>
+              <input type="text"  [value]="inforUser.icpcteam.Name" (input)="newName = $event.target.value">
             </div>
-            <div class="row m-2">
-              <label class="col-3">Email: </label>
-              <input [value]="inforUser.email"
-            (input)="email = $event.target.value" type="text" readonly class="form-control col-8">
-            </div>
-            <div class="row m-2">
-              <label class="col-3">Tên: </label>
-              <input [value]="inforUser.Name"
-            (input)="Name = $event.target.value" type="text" class="form-control col-8">
-            </div>
-            <div class="row m-2">
-              <label class="col-3">Giới tính: </label>
-              <select class="col-8" name="Tên trường" id="selectSex">
-                <option value="{{inforUser.Sex}}">{{inforUser.Sex}}</option>
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-                <option value="Khác">Khác</option>
-              </select>
-            </div>
-            <div class="row m-2 datetimepicker" data-provide="datepicker">
-              <label class="col-3">Ngày sinh: </label>
-              <input [value]="inforUser.BirthDate"
-            (input)="BirthDate = $event.target.value"  type="text" class="form-control col-8 " >
-                <div class="input-group-addon">
-                  <span class="glyphicon glyphicon-th"></span>
-              </div>
-            </div>
-            <div class="row m-2">
-              <label class="col-3">Trường: </label>
-              <select class="col-8" name="Tên trường" id="selectSchool">
-                <option value="{{inforUser.university.id}}">{{inforUser.university.Name}}</option>
-                <option value="5ec13aab944804270001165d">Đại học Khoa học Tự nhiên thành phố Hồ Chí Minh</option>
-                <option value="1">ĐH Bach Khoa</option>
-                <option value="2">ĐH SPKT</option>
-                <option value="5ec15273e731461fa870b59d">aa</option>
-              </select>
-            </div>
-            <div class="row m-2">
-              <label class="col-3">Khối thi: </label>
-              <input readonly placeholder="Siêu cúp" type="text" class="form-control col-8">
+            <div class="col-6">
+              <label class="col-12">Khối thi </label>
+              <input readonly type="text" placeholder="" value="ICPC">
             </div>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Thoát</button>
-              <button type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" (click)="updateProfile();">Lưu thay đổi</button>
+              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
+              <button (click)="UpdateTenTeam(inforUser.icpcteam.Year,inforUser.icpcteam.id);" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Lưu</button>
           </div>
       </div>
   </div>
 </div>
-

@@ -10,7 +10,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  newName: '';
   email:'';
   Name:'';
   Sex:'';
@@ -29,6 +29,9 @@ export class ProfileComponent implements OnInit {
       $("#clickEditProfile").click(function(){
           $("#EditProfile").modal('show');
       });
+      $("#clickUpdateName").click(function () {
+        $("#UpdateName").modal('show');
+    });
   });
   }
   postUpdateProfile(){
@@ -74,6 +77,53 @@ export class ProfileComponent implements OnInit {
         else Swal.fire('Thành công', err[`error`].text, 'success');
     })
     location.reload();
+  }
+  postXoaTeam(id){
+    const options = {
+      headers:new HttpHeaders({
+        'Content-Type':'text/plain'
+      })
+    };
+    return this.http.post("https://strapi-atlas.herokuapp.com/accounts/canceljointeam", {
+      "token":localStorage.token,
+      "id":localStorage.id,
+      "idteam": id
+    },options);
+  }
+  XoaTeam(id) {
+    this.postXoaTeam(id)
+      .subscribe(temp => {
+        Swal.fire('Thành công', temp, 'success').then((result) => {
+
+          location.reload();
+          })
+      });
+  }
+  postUpdateTenTeam(year, id) {
+    if (this.newName == '') {
+      return ;
+    }
+    const options = {
+      headers:new HttpHeaders({
+        'Content-Type':'text/plain'
+      })
+    };
+    return this.http.post("https://strapi-atlas.herokuapp.com/icpc-teams/updatename", {
+      "token":localStorage.token,
+      "id":localStorage.id,
+      "idteam": id,
+      "Year": year,
+      "newname":this.newName
+    },options);
+  }
+  UpdateTenTeam(year, id) {
+    this.postUpdateTenTeam(year,id)
+      .subscribe(temp => {
+        Swal.fire('Thành công', temp, 'success').then((result) => {
+
+        location.reload();
+        })
+    })
   }
   getData(token, id){
     return this.http.get('https://strapi-atlas.herokuapp.com/accounts/'+ '?token='+token +'&id=' +id);

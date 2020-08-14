@@ -45,7 +45,7 @@
           <div class="card" style="width: 100%;">
             <div class="card-header row m-2">
               <div class="col">
-                <h5>Lịch sử tham gia ICPC tin học qua từng năm</h5>
+                <h5>Lịch sử tham gia Olympic tin học qua từng năm</h5>
               </div>
               <div style="float:right">
                 <button id="clickDangKyOlympic" data-toggle="modal" data-target="#DangKyOlympic" type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Đăng ký</button>
@@ -83,29 +83,46 @@
   <div class="modal-dialog modal-dialog-centered modal-x" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h2 class="modal-title text-center">Đăng ký thi ICPC</h2>
+              <h2 class="modal-title text-center">Đăng ký thi Olympic</h2>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
           <div class="modal-body row">
             <div class="col-6">
-              <label >Khối thi: </label>
-              <input type="text" readonly placeholder="ICPC">
+              <label >MSSV:</label>
+              <input type="text" placeholder="mssv"(input)="mssv = $event.target.value">
             </div>
             <div class="col-6">
-              <label class="col-12">Chọn đội thi: </label>
-              <select name="" id="" style="width:100%">
-                <option value="">--- Chọn tên đôi ---</option>
-                <option value="01">HCMUS 01</option>
-                <option value="02">HCMUS 02</option>
-                <option value="03">HCMUS 03</option>
+              <label >SĐT:</label>
+              <input type="text" placeholder="sđt"(input)="sdt = $event.target.value">
+            </div>
+            <div class="col-6">
+              <label >Khoa:</label>
+              <input type="text" placeholder="khoa"(input)="khoa = $event.target.value">
+            </div>
+            <div class="col-6">
+              <label >Year:</label>
+              <input type="text" placeholder="sinh viên năm mấy ?" (input)="year = $event.target.value">
+            </div>
+            <div class="col-6">
+              <label>Mức: </label>
+              <select name="level" id="level" style="width:100%">
+                <option value="1">Cấp trường</option>
+                <option value="2">Cấp quốc gia</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label>Khối thi: </label>
+              <select name="khoithi" id="khoithi" style="width:100%">
+                <option value="Chuyên tin">Chuyên tin</option>
+                <option value="Không chuyên">Không chuyên</option>
               </select>
             </div>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
-              <button (click)="DangKyTeamOlympic();" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Đăng ký</button>
+              <button (click)="DangKyTeamOlympic2();" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Đăng ký</button>
           </div>
       </div>
   </div>

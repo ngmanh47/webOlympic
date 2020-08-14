@@ -44,7 +44,8 @@ const routesConfig: Routes = [
       // Profile
       { path: 'profile/:id', component: ProfileComponent},
       { path: 'profile/:id/editpassword', component: EditPassWordComponent},
-      { path: 'profile/:id/olympiclist', component: OlympicListComponent},
+      { path: 'profile/:id/icpclist', component: OlympicListComponent},
+      { path: 'profile/:id/olympiclist', component: OlympicList2Component},
       // Sponsor
       { path: 'sponsor', component: SponsorComponent},
 
@@ -89,6 +90,7 @@ import { SinglePostUserComponent } from './User/Pages/Single-post/single-post-us
 import { ProfileComponent } from './User/Pages/Profile/profile.component';
 import { EditPassWordComponent } from './User/Pages/Profile/EditPassWord/edit-password.component';
 import { OlympicListComponent } from './User/Pages/Profile/OlympicList/olympic-list.component';
+import { OlympicList2Component } from './User/Pages/Profile/OlympicList2/olympic-list2.component';
 import { SponsorComponent } from './User/Pages/sponsor/sponsor.component';
 
 
