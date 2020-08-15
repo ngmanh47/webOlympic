@@ -39,10 +39,13 @@ export class EditPassWordComponent implements OnInit {
       err => {
         if( err[`error`].text=="Cap nhat mat khau khong thanh cong !")
         {
-          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning');
-          return;
+          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning').then((result) => {
+            location.reload();
+          })
         }
-        else Swal.fire('Thành công', err[`error`].text, 'success');
+        else Swal.fire('Thành công', err[`error`].text, 'success').then((result) => {
+          location.reload();
+        })
       }
     )
 

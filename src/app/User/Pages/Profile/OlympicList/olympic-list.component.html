@@ -1,57 +1,59 @@
 <div class="container">
   <div class="row profile-container">
-      <div class="col-12 col-lg-2" style="border-right: 1px solid #888888;">
-          <h4 >User Profile</h4>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item" style="border-top: none;">
-                  <a href="/profile/1" style="text-decoration: none; color: #888888;">
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                      User profile
-                  </a>
-              </li>
-              <li class="list-group-item" style="border-top: none;">
-                  <a href="" style="text-decoration: none; color: #888888;">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      Achievements
-                  </a>
-              </li>
-              <li class="list-group-item" style="border-top: none;">
-                  <a href="" style="text-decoration: none; color: #888888;">
-                      <i class="fa fa-bell" aria-hidden="true"></i>
-                      Notifications
-                  </a>
-              </li>
-              <li class="list-group-item" style="border-top: none;">
-                  <a href="/profile/1/editpassword" style="text-decoration: none; color: #888888;">
-                      <i class="fa fa-key" aria-hidden="true"></i>
-                      Edit password
-                  </a>
-              </li>
-              <li class="list-group-item" style="border-top: none;">
-                  <a href="/profile/1/icpclist" style="text-decoration: none; color: #888888;">
-                      <i class="fa fa-list" aria-hidden="true"></i>
-                      ICPC list
-                  </a>
-              </li>
-              <li class="list-group-item" style="border-top: none;">
-                  <a href="/profile/1/olympiclist" style="text-decoration: none; color: #888888;">
-                      <i class="fa fa-list" aria-hidden="true"></i>
-                      Olympic list
-                  </a>
-              </li>
-            </ul>
-      </div>
-      <div class="col-12 col-lg-10">
-          <div class="card" style="width: 100%;">
-            <div class="card-header row m-2">
-              <div class="col">
-                <h5>Lịch sử tham gia ICPC tin học qua từng năm</h5>
-              </div>
-              <div style="float:right">
-                <button id="clickDangKyOlympic" data-toggle="modal" data-target="#DangKyOlympic" type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Đăng ký</button>
-              </div>
+    <div class="col-12 col-lg-2" style="border-right: 1px solid #888888;">
+      <h4>User Profile</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            User profile
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            Achievements
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            Notifications
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1/editpassword" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-key" aria-hidden="true"></i>
+            Edit password
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1/icpclist" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            ICPC list
+          </a>
+        </li>
+        <li class="list-group-item" style="border-top: none;">
+          <a href="/profile/1/olympiclist" style="text-decoration: none; color: #888888;">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Olympic list
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-12 col-lg-10">
+      <div class="card" style="width: 100%;">
+        <div class="card-header row m-2">
+          <div class="col">
+            <h5>Lịch sử tham gia ICPC tin học qua từng năm</h5>
           </div>
-          <div class="card-body">
+          <div style="float:right">
+            <button id="clickDangKyOlympic" (click)="ICPCTeam();" data-toggle="modal" data-target="#DangKyOlympic"
+              type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Đăng ký</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div *ngIf="this.olympicList$[0]==null ? false : true">
             <table class="mb-0 table table-bordered">
               <thead>
                 <tr>
@@ -70,82 +72,108 @@
                 </tr>
               </tbody>
             </table>
-            <div style="float:right">
-              <button id="clickYeuCauCapNhat" data-toggle="modal" data-target="#YeuCauCapNhat" type="button" class="mt-2 mb-3 ml-2 btn btn-primary">Yêu cầu cập nhật</button>
-            </div>
           </div>
+          <div *ngIf="this.olympicList$[0]==null ? true : false">
+            <table class="mb-0 table table-bordered">
+              <thead>
+                <tr>
+                  <th>Khối thi</th>
+                  <th>Tên đội</th>
+                  <th>Cấp bậc</th>
+                  <th>Năm thi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr colspan="4">
+                  <th class="text-center">Bạn chưa tham gia team icpc!</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                </tr>
+              </tbody>
+              </table>
+          </div>
+          <div style="float:right">
+            <button id="clickYeuCauCapNhat" data-toggle="modal" data-target="#YeuCauCapNhat" type="button"
+              class="mt-2 mb-3 ml-2 btn btn-primary">Yêu cầu cập nhật</button>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
 
 
-<div class="modal" id="DangKyOlympic" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+  <div class="modal" id="DangKyOlympic" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-x" role="document">
       <div class="modal-content">
-          <div class="modal-header">
-              <h2 class="modal-title text-center">Đăng ký thi ICPC</h2>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+        <div class="modal-header">
+          <h2 class="modal-title text-center">Đăng ký thi ICPC</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="col-6">
+            <label>Khối thi: </label>
+            <input type="text" readonly placeholder="ICPC">
           </div>
-          <div class="modal-body row">
-            <div class="col-6">
-              <label >Khối thi: </label>
-              <input type="text" readonly placeholder="ICPC">
-            </div>
-            <div class="col-6">
-              <label class="col-12">Chọn đội thi: </label>
-              <select name="" id="" style="width:100%">
-                <option value="">--- Chọn tên đôi ---</option>
-                <option value="01">HCMUS 01</option>
-                <option value="02">HCMUS 02</option>
-                <option value="03">HCMUS 03</option>
-              </select>
-            </div>
+          <div class="col-6">
+            <label class="col-12">Chọn đội thi: </label>
+            <select name="" id="icpcteam" style="width:100%">
+              <option *ngFor="let item of icpcEmpty" [value]="item.id">{{item.Name}}</option>
+            </select>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
-              <button (click)="DangKyTeamOlympic();" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Đăng ký</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold"
+            data-dismiss="modal">Huỷ</button>
+          <button (click)="DangKyTeamOlympic();" type="button"
+            class="btn btn-primary min-w-sm-100px font-weight-bold mr-2">Đăng ký</button>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-<div class="modal" id="YeuCauCapNhat" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+  <div class="modal" id="YeuCauCapNhat" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-x" role="document">
       <div class="modal-content">
-          <div class="modal-header">
-              <h2 class="modal-title">Yêu cầu cập nhật thành tích</h2>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
+        <div class="modal-header">
+          <h2 class="modal-title">Yêu cầu cập nhật thành tích</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <div class="col-6">
+            <label>Chọn khối thi: </label>
+            <input type="text" readonly placeholder="ICPC">
           </div>
-          <div class="modal-body row">
-            <div class="col-6">
-              <label >Chọn khối thi: </label>
-              <input type="text" readonly placeholder="ICPC">
-            </div>
-            <div class="col-6">
-              <label class="col-12">Chọn đội thi: </label>
-              <select name="" id="" style="width:100%">
-                <option value="">--- Chọn tên đôi ---</option>
-                <option value="01">HCMUS 01</option>
-                <option value="02">HCMUS 02</option>
-                <option value="03">HCMUS 03</option>
-              </select>
-            </div>
-            <div class="col-12">
-              <label>Nội dung</label>
-              <textarea id="" name="" class="form-control" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 111px;"></textarea>
-            </div>
-            <div class="col-12">
-              <label class="col-12">File đính kèm (minh chứng)</label>
-              <button >Chọn file đính kèm<i class="fa fa-file-upload"></i></button>
-            </div>
+          <div class="col-6">
+            <label class="col-12">Chọn đội thi: </label>
+            <select name="" id="" style="width:100%">
+              <option value="">--- Chọn tên đôi ---</option>
+              <option value="01">HCMUS 01</option>
+              <option value="02">HCMUS 02</option>
+              <option value="03">HCMUS 03</option>
+            </select>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
-              <button (click)="GuiYeuCauCapNhat();" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Gửi</button>
+          <div class="col-12">
+            <label>Nội dung</label>
+            <textarea id="" name="" class="form-control" rows="5"
+              style="margin-top: 0px; margin-bottom: 0px; height: 111px;"></textarea>
           </div>
+          <div class="col-12">
+            <label class="col-12">File đính kèm (minh chứng)</label>
+            <button>Chọn file đính kèm<i class="fa fa-file-upload"></i></button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold"
+            data-dismiss="modal">Huỷ</button>
+          <button (click)="GuiYeuCauCapNhat();" type="button"
+            class="btn btn-primary min-w-sm-100px font-weight-bold mr-2">Gửi</button>
+        </div>
       </div>
+    </div>
   </div>
-</div>

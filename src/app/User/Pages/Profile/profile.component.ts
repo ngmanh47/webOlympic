@@ -71,17 +71,21 @@ export class ProfileComponent implements OnInit {
       err => {
         if( err[`error`].text=="Cap nhat khong thanh cong !")
         {
-          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning');
+          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning').then((result) => {
+            location.reload();
+          })
           return;
         }
-        else Swal.fire('Thành công', err[`error`].text, 'success');
+        else Swal.fire('Thành công', err[`error`].text, 'success').then((result) => {
+          location.reload();
+        })
     })
     location.reload();
   }
   postXoaTeam(id){
     const options = {
       headers:new HttpHeaders({
-        'Content-Type':'text/plain'
+        'Content-Type':'application/json'
       })
     };
     return this.http.post("https://strapi-atlas.herokuapp.com/accounts/canceljointeam", {
@@ -92,11 +96,19 @@ export class ProfileComponent implements OnInit {
   }
   XoaTeam(id) {
     this.postXoaTeam(id)
-      .subscribe(temp => {
-        Swal.fire('Thành công', temp, 'success').then((result) => {
-
-          location.reload();
+      .subscribe(response => {
+        Swal.fire('Thành công', response, 'success');
+      },
+      err => {
+        if( err[`error`].text!="Rut khoi team thanh cong !")
+        {
+          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning').then((result) => {
+            location.reload();
           })
+        }
+        else Swal.fire('Thành công', err[`error`].text, 'success').then((result) => {
+          location.reload();
+        })
       });
   }
   postUpdateTenTeam(year, id) {
@@ -105,7 +117,7 @@ export class ProfileComponent implements OnInit {
     }
     const options = {
       headers:new HttpHeaders({
-        'Content-Type':'text/plain'
+        'Content-Type':'application/json'
       })
     };
     return this.http.post("https://strapi-atlas.herokuapp.com/icpc-teams/updatename", {
@@ -118,12 +130,21 @@ export class ProfileComponent implements OnInit {
   }
   UpdateTenTeam(year, id) {
     this.postUpdateTenTeam(year,id)
-      .subscribe(temp => {
-        Swal.fire('Thành công', temp, 'success').then((result) => {
-
-        location.reload();
-        })
-    })
+      .subscribe(response => {
+        Swal.fire('Thành công', response, 'success');
+      },
+      err => {
+        if (err[`error`].text != "Thay doi ten team thanh cong !") {
+          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning').then((result) => {
+            location.reload();
+          })
+        }
+        else {
+          Swal.fire('Thành công', err[`error`].text, 'success').then((result) => {
+            location.reload();
+          })
+        }
+      })
   }
   getData(token, id){
     return this.http.get('https://strapi-atlas.herokuapp.com/accounts/'+ '?token='+token +'&id=' +id);

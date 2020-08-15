@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { BrowserModule } from '@angular/platform-browser';
 
 import * as $ from 'jquery';
 @Component({
@@ -11,7 +12,7 @@ import * as $ from 'jquery';
 })
 export class OlympicList2Component implements OnInit {
 
-  olympicList$:any=[]
+  olympicList$1:any=[]
   khoa:string = '';
   year:string = '' ;
   mssv:string = '' ;
@@ -22,7 +23,6 @@ export class OlympicList2Component implements OnInit {
 
   ngOnInit() {
     this.CapNhatDanhSach();
-    this.getUser();
   }
   GuiYeuCauCapNhat(){
     Swal.fire('Thành công', 'Chờ API', 'success');
@@ -30,7 +30,8 @@ export class OlympicList2Component implements OnInit {
   postTeamOlympic2(){
     const options = {
       headers:new HttpHeaders({
-        'Content-Type':'text/plain'
+        accept: 'text/plain',
+        'Content-Type': 'application/json'
       })
     };
     return this.httpc.post("https://strapi-atlas.herokuapp.com/accounts/signup-olp-unversity", {
@@ -44,26 +45,35 @@ export class OlympicList2Component implements OnInit {
       "Sdt": this.sdt,
       "Year": this.year,
       "Level": $("#level").val(),
-      "Grade": $("#khoithi").val(),
+      "Grade": $("#khoithi").val()
     },options);
   }
   DangKyTeamOlympic2(){
     this.postTeamOlympic2()
-      .subscribe(temp => {
-        Swal.fire('Thành công', temp, 'success').then((result) => {
-          location.reload();
+      .subscribe(response => {
+        Swal.fire('Thành công', response, 'success');
+      },
+      err => {
+        if( err[`error`].text!="Ban da dang ki tham gia thi thanh cong")
+        {
+          Swal.fire('Lỗi người dùng', err[`error`].text, 'warning').then((result) => {
+            location.reload();
           })
-      });
+        }
+        else Swal.fire('Thành công', err[`error`].text, 'success').then((result) => {
+          location.reload();
+        })
+      })
   }
   CapNhatDanhSach(){
       this.getDanhSach()
       .subscribe(temp=>{
-        this.olympicList$=temp['history'];
-        this.olympicList$ = Array.of(this.olympicList$);
+        this.olympicList$1=temp['data'];
+        console.log(this.olympicList$1);
       })
   }
   getDanhSach(){
-    return this.httpc.get('https://strapi-atlas.herokuapp.com/olp-universities/find-all-olp-history?id='+localStorage.id+'&token='+localStorage.token);
+    return this.httpc.get('https://strapi-atlas.herokuapp.com/olp-universities/find-all-olp-account?id='+localStorage.id+'&token='+localStorage.token);
   }
   getData(token, id){
     return this.httpc.get('https://strapi-atlas.herokuapp.com/accounts/'+ '?token='+token +'&id=' +id);

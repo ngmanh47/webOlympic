@@ -193,29 +193,31 @@
     </div>
   </div>
 </div>
-<div class="modal" id="UpdateName" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-x" role="document">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h2 class="modal-title text-center">Cập nhật tên đội</h2>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="modal-body row">
-            <div class="col-6">
-              <label >Tên đội thi </label>
-              <input type="text"  [value]="inforUser.icpcteam.Name" (input)="newName = $event.target.value">
+<div *ngIf="inforUser.icpcteam.Name != ''">
+  <div class="modal" id="UpdateName" tabindex="-1" role="dialog" aria-labelledby="exampleModalSizeXl" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-x" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center">Cập nhật tên đội</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="col-6">
-              <label class="col-12">Khối thi </label>
-              <input readonly type="text" placeholder="" value="ICPC">
+            <div class="modal-body row">
+              <div class="col-6">
+                <label >Tên đội thi </label>
+                <input type="text"  [value]="inforUser.icpcteam.Name" (input)="newName = $event.target.value">
+              </div>
+              <div class="col-6">
+                <label class="col-12">Khối thi </label>
+                <input readonly type="text" placeholder="" value="ICPC">
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
-              <button (click)="UpdateTenTeam(inforUser.icpcteam.Year,inforUser.icpcteam.id);" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Lưu</button>
-          </div>
-      </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary  min-w-sm-100px font-weight-bold" data-dismiss="modal">Huỷ</button>
+                <button (click)="UpdateTenTeam(inforUser.icpcteam.Year,inforUser.icpcteam.id);" type="button" class="btn btn-primary min-w-sm-100px font-weight-bold mr-2" >Lưu</button>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
