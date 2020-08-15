@@ -3,16 +3,18 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import * as $ from 'jquery';
 @Component({
-  selector: 'app-olympic-list',
+  selector: 'app-olympic-list2',
   templateUrl: './olympic-list2.component.html',
   styleUrls: ['./olympic-list2.component.css']
 })
 export class OlympicList2Component implements OnInit {
 
-  olympicList$1:any=[]
+  olpYear: any = [];
+  listOlp:any=[]
   khoa:string = '';
   year:string = '' ;
   mssv:string = '' ;
@@ -23,6 +25,7 @@ export class OlympicList2Component implements OnInit {
 
   ngOnInit() {
     this.CapNhatDanhSach();
+    this.OLPYEAR();
   }
   GuiYeuCauCapNhat(){
     Swal.fire('Thành công', 'Chờ API', 'success');
@@ -68,8 +71,8 @@ export class OlympicList2Component implements OnInit {
   CapNhatDanhSach(){
       this.getDanhSach()
       .subscribe(temp=>{
-        this.olympicList$1=temp['data'];
-        console.log(this.olympicList$1);
+        this.listOlp = temp['data'];
+        console.log(this.listOlp);
       })
   }
   getDanhSach(){
@@ -83,4 +86,14 @@ export class OlympicList2Component implements OnInit {
       this.inforUser = data['temp'][0];
     });
   }
+  OLPYEAR(){
+    this.getOLPYEAR()
+      .subscribe(temp => {
+      this.olpYear=temp['data'];
+        console.log(this.olpYear);
+    })
+}
+getOLPYEAR(){
+  return this.httpc.get('https://strapi-atlas.herokuapp.com/olp-universities/find-all-olp-history-on-year?id='+localStorage.id+'&token='+localStorage.token+'&year=2020');
+}
 }

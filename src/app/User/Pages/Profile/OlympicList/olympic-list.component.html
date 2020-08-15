@@ -99,6 +99,35 @@
           </div>
         </div>
       </div>
+      <div class="card" style="width: 100%;">
+        <div class="card-header row m-2">
+          <div class="col">
+            <h5>Các team ICPC tin học qua theo năm hiện tại</h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <div>
+            <table class="mb-0 table table-bordered">
+              <thead>
+                <tr>
+                  <th>Khối thi</th>
+                  <th>Tên đội</th>
+                  <th>Cấp bậc</th>
+                  <th>Năm thi</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of icpcYear">
+                <tr>
+                  <th scope="row">ICPC</th>
+                  <th>{{ item.Name }}</th>
+                  <th>{{ item.Rank }}</th>
+                  <th>{{ item.Year }}</th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

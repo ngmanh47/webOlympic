@@ -10,6 +10,7 @@ import * as $ from 'jquery';
 })
 export class OlympicListComponent implements OnInit {
 
+  icpcYear: any = [];
   icpcEmpty: any = [];
   olympicList$: any = [];
   oldPassword:string = '';
@@ -20,6 +21,7 @@ export class OlympicListComponent implements OnInit {
 
   ngOnInit() {
     this.CapNhatDanhSach();
+    this.ICPCYEAR();
   }
   GuiYeuCauCapNhat(){
     Swal.fire('Thành công', 'Chờ API', 'success');
@@ -68,14 +70,19 @@ export class OlympicListComponent implements OnInit {
         .subscribe(temp => {
         this.olympicList$=temp['history'];
           this.olympicList$ = Array.of(this.olympicList$);
-
-          if (this.olympicList$[0] ==null) {
-            console.log(this.olympicList$);
-            console.log("aaaaaaaaa");
-          }
       })
   }
   getDanhSach(){
     return this.httpc.get('https://strapi-atlas.herokuapp.com/accounts/history?id='+localStorage.id+'&token='+localStorage.token);
   }
+  ICPCYEAR(){
+    this.getICPCYEAR()
+      .subscribe(temp => {
+      this.icpcYear=temp['data'];
+        console.log(this.icpcYear);
+    })
+}
+getICPCYEAR(){
+  return this.httpc.get('https://strapi-atlas.herokuapp.com/icpc-teams/find-all-icpc-history-on-year?id='+localStorage.id+'&token='+localStorage.token+'&year=2020');
+}
 }

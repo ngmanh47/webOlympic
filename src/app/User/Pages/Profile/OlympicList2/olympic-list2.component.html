@@ -63,7 +63,7 @@
                   <th scope="col">Số điện thoại</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let item of olympicList$1">
+              <tbody *ngFor="let item of listOlp">
                 <tr>
                   <th scope="col">{{ item.Grade }}</th>
                   <th>{{ item.Name }}</th>
@@ -73,7 +73,7 @@
               </tbody>
             </table>
           </div>
-          <div *ngIf="this.olympicList$1[0]==null ? true : false">
+          <!-- <div *ngIf="this.listOlp[0]==null ? true : false">
             <table class="mb-0 table table-bordered">
               <thead>
                 <tr>
@@ -92,10 +92,39 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> -->
           <div style="float:right">
             <button id="clickYeuCauCapNhat" data-toggle="modal" data-target="#YeuCauCapNhat" type="button"
               class="mt-2 mb-3 ml-2 btn btn-primary">Yêu cầu cập nhật</button>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="width: 100%;">
+        <div class="card-header row m-2">
+          <div class="col">
+            <h5>Các team Olympic tin học qua theo năm hiện tại</h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <div>
+            <table class="mb-0 table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Khối thi</th>
+                  <th scope="col">Mức thi</th>
+                  <th scope="col">Sinh viên năm</th>
+                  <th scope="col">Số điện thoại</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of olpYear">
+                <tr>
+                  <th scope="col">{{ item.Grade }}</th>
+                  <th>{{ item.Name }}</th>
+                  <th>{{ item.Rank  }}</th>
+                  <th>{{ item.Sdt }}</th>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
